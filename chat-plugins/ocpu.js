@@ -423,6 +423,15 @@ exports.commands = {
 		this.sendReplyBox(header + official.join(' ') + nonOfficial.join(' ') + privateRoom.join(' ') + (groupChats.length > 1 ? groupChats.join(' ') : '') + (battleRooms.length > 1 ? battleRooms.join(' ') : ''));
 	},
 
+	bt: 'battletest',
+	battletest: function (target, room, user) {
+		if (!this.can('roomvoice')) return false;
+		if (!this.canTalk()) return false;
+		if (!target) return this.parse('/help battletest');
+		//this.splitTarget (target, exactName);
+		this.sendReply("This command is currently being worked on.");
+	},
+
 	mt: 'mktour',
 	mktour: function (target, room, user) {
 		if (!target) return this.errorReply("Usage: /mktour [tier] - creates a tournament in single elimination.");

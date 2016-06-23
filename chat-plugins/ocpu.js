@@ -428,9 +428,9 @@ exports.commands = {
 		if (!this.can('roomvoice')) return false;
 		if (!this.canTalk()) return false;
 		if (!target) return this.parse('/help battletest');
-		this.splitTarget (target, exactName);
+		this.splitTarget (target, true);
 		if (this.targetUser = false) {
-			this.add("That user is not online!")
+			this.add("That user is not online.")
 		} else {
 			this.add(this.targetUsername + " has started a battletest on " + this.targetUser + "!")
 		}

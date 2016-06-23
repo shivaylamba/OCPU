@@ -428,10 +428,15 @@ exports.commands = {
 		if (!this.can('roomvoice')) return false;
 		if (!this.canTalk()) return false;
 		if (!target) return this.parse('/help battletest');
-		//this.splitTarget (target, exactName);
-		this.sendReply("This command is currently being worked on.");
+		this.splitTarget (target, exactName);
+		if (this.targetUser = false) {
+			this.add("That user is not online!")
+		} else {
+			this.add(this.targetUsername + " has started a battletest on " + this.targetUser + "!")
+		}
 	},
-
+	battletesthelp: ['/battletest (/bt) [user]: States to the room that a battle test has started'],
+	
 	mt: 'mktour',
 	mktour: function (target, room, user) {
 		if (!target) return this.errorReply("Usage: /mktour [tier] - creates a tournament in single elimination.");

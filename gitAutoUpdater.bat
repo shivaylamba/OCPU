@@ -31,9 +31,9 @@ echo.
 echo [Time Interval] %time% - Beginning Updates...
 echo [Interval] %time% - Should Pass... >>"gitUpdate.log"
 echo. >>"gitUpdate.log"
-git pull
+git pull http://github.com/zellman01/OCPU.git
 rem Tell me when its done
-msg %Username% Autoupdater: 10 AM Pull Passed [%chk%]
+echo %Username% Autoupdater: 10 AM Pull Passed [%chk%]
 echo [Popup] Autoupdater Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate
 
@@ -42,8 +42,8 @@ echo.
 echo [Time Interval] %time% - Beginning Updates...
 echo [Interval] %time% - Should Pass... >>"gitUpdate.log"
 echo. >>"gitUpdate.log"
-git pull
-msg %Username% Autoupdater: 2 PM Pull Passed [%chk%]
+git pull http://github.com/zellman01/OCPU.git
+echo %Username% Autoupdater: 2 PM Pull Passed [%chk%]
 echo [Popup] Autoupdater Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate
 
@@ -52,8 +52,8 @@ echo.
 echo [Time Interval] %time% - Beginning Updates...
 echo [Interval] %time% - Should Pass... >>"gitUpdate.log"
 echo. >>"gitUpdate.log"
-git pull
-msg %Username% Autoupdater: 8 PM Pull Passed [%chk%]
+git pull http://github.com/zellman01/OCPU.git
+echo %Username% Autoupdater: 8 PM Pull Passed [%chk%]
 echo [Popup] Autoupdater Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate
 
@@ -62,8 +62,8 @@ echo.
 echo [Time Interval] %time% - Beginning Updates...
 echo [Interval] %time% - Should Pass... >>"gitUpdate.log"
 echo. >>"gitUpdate.log"
-git pull
-msg %Username% Autoupdater: Midnight Pull Passed [%chk%]
+git pull http://github.com/zellman01/OCPU.git
+echo %Username% Autoupdater: Midnight Pull Passed [%chk%]
 echo [Popup] Autoupdater Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate
 
@@ -73,8 +73,8 @@ echo.
 echo [Time Interval] %time% - Called Using --test
 echo [Development Mode] %time% - Should Pass... >>"gitUpdate.log"
 echo. >>"gitUpdate.log"
-git pull
-msg %Username% Git TEST: Git Test Passed [%chk%]
+git pull http://github.com/zellman01/OCPU.git
+echo %Username% Git TEST: Git Test Passed [%chk%]
 echo [Popup] Test Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate
 
@@ -84,7 +84,7 @@ echo.
 echo [Time Interval] %time% - Called Using -e
 echo [Emergency Mode] %time% - Should Pass... >>"gitUpdate.log"
 echo 
-git pull
-msg %Username% Emergency Passed! [%chk%]
+git pull http://github.com/zellman01/OCPU.git
+echo %Username% Emergency Passed! [%chk%]
 echo [Popup] Emergency Passed - %time% >>"gitUpdate.log"
 goto AutoUpdate

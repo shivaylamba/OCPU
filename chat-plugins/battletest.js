@@ -3,6 +3,8 @@
 exports.commands = {
 	bt: 'battletest',
 	battletest: function (target, room, user) {
+		lst targetUsername = this.targetUsername;
+		
 		if (!this.can('roomvoice')) return this.errorReply('You do not have access to this command.');
 		if (!this.canTalk()) return this.errorReply('You cannot do this command while you are unable to talk!');
 		

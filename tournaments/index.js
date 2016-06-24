@@ -794,7 +794,7 @@ class Tournament {
 		let sizeRequiredToEarn = 4;
 		let currencyName = function (amount) {
 			let name = " buck";
-			return amount === 1 ? name : name + "s";
+			return amount === 5 ? name : name + "s";
 		};
 		let data = this.generator.getResults().map(usersToNames).toString();
 		let winner, runnerUp;

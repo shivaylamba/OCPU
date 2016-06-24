@@ -9,7 +9,7 @@ exports.commands = {
 	
 		if (!this.can('roomvoice')) return this.errorReply('You do not have access to this command.');
 		if (!this.canTalk()) return this.errorReply('You cannot do this command while you are unable to talk!');
-		if (!target) return this.parse("/help battletest")
+		//if (!target) return this.parse("/help battletest")
 		
 		if (targetUsername = "undefined") {
 			this.add("The battletest could not be started.")

@@ -31,15 +31,15 @@ function wikiaSearch(subdomain, query, callback) {
 			return callback(null, result.items[0]);
 		});
 	}).once('error', function (err) {
-		callback(err);
 		this.on('error', noop);
+		callback(err);
 	});
 }
 
 exports.commands = {
 	ygo: 'yugioh',
 	yugioh: function (target, room, user) {
-		if (!this.canBroadcast()) return;
+		if (!this.runBroadcast()) return;
 		let subdomain = 'yugioh';
 		let query = target.trim();
 

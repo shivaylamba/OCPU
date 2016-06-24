@@ -1,3 +1,5 @@
+'use strict';
+
 exports.commands = {
 	bt: 'battletest'
 	battletest: function (target, room, user) {

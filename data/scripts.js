@@ -1618,7 +1618,7 @@ exports.BattleScripts = {
 					(hasType['Ice'] && !counter['Ice']) ||
 					(hasType['Psychic'] && !!counter['Psychic'] && !hasType['Flying'] && !hasAbility['Pixilate'] && template.types.length > 1 && counter.stab < 2) ||
 					(hasMove['raindance'] && hasType['Water'] && !counter['Water']) ||
-					// (movePool.includes('technoblast') || template.requiredMove && movePool.includes(toId(template.requiredMove)))) && //This is where the error is. Please fix ASAP. Error: "CRASH: TypeError: movePool.includes is not a function"
+					(movePool.includes('technoblast') || template.requiredMove && movePool.includes(toId(template.requiredMove)))) &&
 					(counter['physicalsetup'] + counter['specialsetup'] < 2 && (!counter.setupType || counter.setupType === 'Mixed' || (move.category !== counter.setupType && move.category !== 'Status') || counter[counter.setupType] + counter.Status > 3))) {
 					// Reject Status or non-STAB
 					if (!isSetup && !move.weather && moveid !== 'rest' && moveid !== 'sleeptalk' && (move.category === 'Status' || !hasType[move.type])) rejected = true;

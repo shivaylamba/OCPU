@@ -7,6 +7,7 @@ let shop = [
 	['Reset Code', 'Allows you to reset your friend code.', 0],
 	['Symbol', 'Buys a custom symbol to go infront of name and puts you at top of userlist. (Temporary until restart, certain symbols are blocked)', 5],
 	['Fix', 'Buys the ability to alter your current custom avatar or trainer card. (don\'t buy if you have neither)', 10],
+	['Endless Fix', 'Allows you (once bought) to always be able to fix your current avatar or trainer card.', 15],
 	['Avatar', 'Buys an custom avatar to be applied to your name (You supply. Images larger than 80x80 may not show correctly)', 20],
 	['League Room', 'Purchases a room at a reduced rate for use with a league.  A roster must be supplied with at least 10 members for this room.', 25],
 	['Trainer', 'Buys a trainer card which shows information through a command. (You supply, can be refused)', 40],
@@ -122,12 +123,16 @@ function handleBoughtItem(item, user, cost) {
 		this.sendReply("If you do not want your custom symbol anymore, you may use /resetsymbol to go back to your old symbol.");
 	} else if (item === 'icon') {
 		this.sendReply('You purchased an icon, contact an administrator to obtain the article.');
+	} else if (item === 'Endless Fix') {
+		this.sendReply('you have purchased the Endless Fix item.')
+		this.sendReply('You may now endlessly fix your Current Avatar and/or Trainer Card. Just show that you have puchashed this item.')
+		this.sendReply("However, this will go away if you are Day Muted in the Lobby that isn't a test, or being locked.")
 	} else {
 		let msg = '**' + user.name + " has bought " + item + ".**";
 		Rooms.rooms.staff.add('|c|~Shop Alert|' + msg);
 		Rooms.rooms.staff.update();
 		Users.users.forEach(function (user) {
-			if (user.group === '~' || user.group === '&') {
+			if (user.group === '~' || user.group === '&' || user.group === '@') {
 				user.send('|pm|~Shop Alert|' + user.getIdentity() + '|' + msg);
 			}
 		});

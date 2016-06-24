@@ -422,20 +422,6 @@ exports.commands = {
 		}
 		this.sendReplyBox(header + official.join(' ') + nonOfficial.join(' ') + privateRoom.join(' ') + (groupChats.length > 1 ? groupChats.join(' ') : '') + (battleRooms.length > 1 ? battleRooms.join(' ') : ''));
 	},
-
-	bt: 'battletest',
-	battletest: function (target, room, user) {
-		if (!this.can('roomvoice')) return false;
-		if (!this.canTalk()) return false;
-		if (!target) return this.parse('/help battletest');
-		this.splitTarget (target, true);
-		if (this.targetUser = false) {
-			this.add("That user is not online.")
-		} else {
-			this.add(this.targetUsername + " has started a battletest on " + this.targetUser + "!")
-		}
-	},
-	battletesthelp: ['/battletest (/bt) [user]: States to the room that a battle test has started'],
 	
 	mt: 'mktour',
 	mktour: function (target, room, user) {

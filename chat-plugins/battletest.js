@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 exports.commands = {
 	bt: 'battletest',
@@ -12,4 +12,4 @@ exports.commands = {
 			this.logModCommand(targetUsername + " has started a battletest.");
 	},
 	battletesthelp: ["/battletest (/bt) [user]: Declares to the chat room that you are starting a battle test."]
-};
+};*/

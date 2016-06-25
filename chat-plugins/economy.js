@@ -7,13 +7,13 @@ let shop = [
 	['Reset Code', 'Allows you to reset your friend code.', 0],
 	['Symbol', 'Buys a custom symbol to go infront of name and puts you at top of userlist. (Temporary until restart, certain symbols are blocked)', 5],
 	['Fix', 'Buys the ability to alter your current custom avatar or trainer card. (don\'t buy if you have neither)', 10],
-	['Endless Fix', 'Allows you (once bought) to always be able to fix your current avatar or trainer card.', 15],
 	['Avatar', 'Buys an custom avatar to be applied to your name (You supply. Images larger than 80x80 may not show correctly)', 20],
 	['League Room', 'Purchases a room at a reduced rate for use with a league.  A roster must be supplied with at least 10 members for this room.', 25],
 	['Trainer', 'Buys a trainer card which shows information through a command. (You supply, can be refused)', 40],
 	['Staff Help', 'Staff member will help set up roomintros and anything else needed in a room. Response may not be immediate.', 50],
 	['Icon', 'Buy a custom icon that can be applied to the rooms you want. You must take into account that the provided image should be 32 x 32', 75],
 	['Room', 'Buys a chatroom for you to own. (within reason, can be refused)', 100],
+	['VIP', 'Buys VIP and gives you a chatroom & endless avatar/icon fixes.', 145],
 ];
 
 let shopDisplay = getShopDisplay(shop);

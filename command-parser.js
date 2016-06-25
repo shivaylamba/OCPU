@@ -38,6 +38,7 @@ const BROADCAST_TOKEN = '!';
 
 const fs = require('fs');
 const path = require('path');
+const parseEmoticons = require('./chat-plugins/emoticons').parseEmoticons;
 
 exports.multiLinePattern = {
 	elements: [],
@@ -656,6 +657,8 @@ let parse = exports.parse = function (message, room, user, connection, levelsDee
 	}
 
 	message = context.canTalk(message);
+
+	if (parseEmoticons(message, room, user)) return;
 
 	return message || false;
 };

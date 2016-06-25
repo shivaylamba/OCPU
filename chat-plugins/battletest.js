@@ -14,5 +14,21 @@ exports.commands = {
 		this.add(user.name + " has started a battle test on " + name + ".");
 		this.logModCommand(user.name + " has started a battletest.");
 	},
-	battletesthelp: ["/battletest (/bt) [user]: Declares to the chat room that you are starting a battle test."]
+	battletesthelp: ["/battletest (/bt) [user]: Declares to the chat room that you are starting a battle test."],
+	
+	btc: 'battletestclear',
+	battletestclear: function (target, room, user) {
+		target = this.splitTarget(target, true);
+		let targetUser = this.targetUser;
+		let name = this.targetUsername;
+		let userid = toId(name);
+		
+		if (!this.can('roomvoice')) return this.errorReply('You do not have access to this command.');
+		if (!this.canTalk()) return this.errorReply("You cannot do this command while tou are unable to talk!");
+		
+		this.add(user.name + " has completed the battle test for " + name + "!");
+		if (targetUser) {
+			targetUser.popup("You have completed your battle test.");
+		}
+	}
 };

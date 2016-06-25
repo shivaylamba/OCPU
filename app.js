@@ -40,6 +40,9 @@
  *
  *   Used to abstract out network connections. sockets.js handles
  *   the actual server and connection set-up.
+ * Tells - from tells.js
+ *
+ *   Handles offline messaging.
  *
  * @license MIT license
  */
@@ -118,6 +121,10 @@ global.Cidr = require('./cidr.js');
 global.Punishments = require('./punishments.js');
 
 global.Rooms = require('./rooms.js');
+
+global.Tells = require('./tells.js');
+
+global.Db = require('origindb')('config/db');
 
 delete process.send; // in case we're a child process
 global.Verifier = require('./verifier.js');

@@ -97,3 +97,15 @@ In general, use modern features only if they're supported in Node 4 and reasonab
 - **Template strings: NEVER** - Horrible performance. Prefer manually stringing strings together with `+`.
 
 Take "good performance" to mean "approximately on par with ES3" and "great performance" to mean "better than ES3".
+
+
+Pull Request
+------------------------------------------------------------------------
+
+Any pull resquests that have any edits in the config file will be IMMEDITLY denied. This is the same for any critical file, the auto-updater file, and the ocpu.js file. If there are no edits in there, it might get merged. If there is an edit in the auto-updater file, however, it might get merged if it doesn't have any edits in the files stated above, but it will be less likely.
+
+
+Issues
+------------------------------------------------------------------------
+
+If you have an idea for the server or a bug that you found, feel free to post them in the Issues area of this GitHub. If it is a bug, please make sure to tell (hopefully in detail) everything that you did so that we may try to replacate it.

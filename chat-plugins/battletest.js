@@ -24,7 +24,7 @@ exports.commands = {
 		let userid = toId(name);
 		
 		if (!this.can('roomvoice')) return this.errorReply('You do not have access to this command.');
-		if (!this.canTalk()) return this.errorReply("You cannot do this command while tou are unable to talk!");
+		if (!this.canTalk()) return this.errorReply("You cannot do this command while you are unable to talk!");
 		
 		this.add(user.name + " has completed the battle test for " + name + "!");
 		if (targetUser) {

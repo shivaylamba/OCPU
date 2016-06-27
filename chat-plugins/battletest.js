@@ -38,6 +38,6 @@ exports.commands = {
 			targetUser.popup("You have completed your battle test.");
 			return;
 		}
-	}
+	},
 	battletestclearhelp: ["/battletestclear (/btc) [user]: Declares that you have completed a battletest for a person."],
 };

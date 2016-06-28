@@ -233,7 +233,7 @@ exports.commands = {
 			}
 		}
 
-       		let emoteMsg = parseEmoticons(target, room, user, true);
+       	let emoteMsg = parseEmoticons(target, room, user, true);
 		if ((!user.blockEmoticons && !targetUser.blockEmoticons) && emoteMsg) target = '/html ' + emoteMsg;
 		
 		if (!message) message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;

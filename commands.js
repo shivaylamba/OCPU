@@ -19,6 +19,9 @@
 
 const crypto = require('crypto');
 const fs = require('fs');
+const path = require('path');
+const parseEmoticons = require('./chat-plugins/emoticons').parseEmoticons;
+const dir = fs.readdirSync(path.resolve(__dirname, 'chat-plugins'));
 
 const MAX_REASON_LENGTH = 300;
 const MUTE_LENGTH = 7 * 60 * 1000;
@@ -149,11 +152,11 @@ exports.commands = {
 		}
 		this.pmTarget = (targetUser || this.targetUsername);
 		if (!targetUser) {
-			this.errorReply("User " + this.targetUsername + " not found. Did you misspell their name?");
+			this.errorReply("User "  + this.targetUsername + " not found. Did you misspell their name? If they are offline, try using /tell to send them an offline message.");
 			return this.parse('/help msg');
 		}
 		if (!targetUser.connected) {
-			return this.errorReply("User " + this.targetUsername + " is offline.");
+			return this.errorReply("User " + this.targetUsername + " is offline. Try using /tell to send them an offline message.");
 		}
 
 		if (Config.pmmodchat) {
@@ -233,9 +236,11 @@ exports.commands = {
 			}
 		}
 
-       	let emoteMsg = parseEmoticons(target, room, user, true);
+		let emoteMsg = parseEmoticons(target, room, user, true);
 		if ((!user.blockEmoticons && !targetUser.blockEmoticons) && emoteMsg) target = '/html ' + emoteMsg;
-		
+
+		message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;
+
 		if (!message) message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;
 		user.send(message);
 		if (targetUser !== user) targetUser.send(message);

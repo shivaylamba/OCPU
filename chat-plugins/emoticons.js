@@ -11,7 +11,7 @@ try {
 	console.error(e);
 }
 
-parseEmoticons function(message, room, user/*, pm*/) {
+function parseEmoticons(message, room, user, pm) {
 	if (typeof message !== 'string' || (!pm && room.disableEmoticons)) return false;
 
 	let match = false;

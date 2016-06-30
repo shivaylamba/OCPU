@@ -11,31 +11,6 @@ try {
 	console.error(e);
 }
 
-exports.parseEmoticons = parseEmoticons;
-
-// for travis build
-if (typeof demFeels.extendEmotes === 'function') {
-	// example extending emotes
-	demFeels.extendEmotes({
-		'(ditto)': 'https://cdn.betterttv.net/emote/554da1a289d53f2d12781907/2x',
-		'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
-		'feelsbn': 'http://i.imgur.com/wp51rIg.png',
-	});
-}
-
-const emotes = demFeels.getEmotes();
-
-const emotesKeys = Object.keys(emotes).sort();
-
-/**
-* Parse emoticons in message.
-*
-* @param {String} message
-* @param {Object} room
-* @param {Object} user
-* @param {Boolean} pm - returns a string if it is in private messages
-* @returns {Boolean|String}
-*/
 function parseEmoticons(message, room, user, pm) {
 	if (typeof message !== 'string' || (!pm && room.disableEmoticons)) return false;
 
@@ -75,6 +50,33 @@ function parseEmoticons(message, room, user, pm) {
 
 	return true;
 }
+
+
+exports.parseEmoticons = parseEmoticons;
+
+// for travis build
+if (typeof demFeels.extendEmotes === 'function') {
+	// example extending emotes
+	demFeels.extendEmotes({
+		'(ditto)': 'https://cdn.betterttv.net/emote/554da1a289d53f2d12781907/2x',
+		'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
+		'feelsbn': 'http://i.imgur.com/wp51rIg.png',
+	});
+}
+
+const emotes = demFeels.getEmotes();
+
+const emotesKeys = Object.keys(emotes).sort();
+
+/**
+* Parse emoticons in message.
+*
+* @param {String} message
+* @param {Object} room
+* @param {Object} user
+* @param {Boolean} pm - returns a string if it is in private messages
+* @returns {Boolean|String}
+*/
 
 /**
 * Create a two column table listing emoticons.

@@ -40,4 +40,10 @@ exports.commands = {
 		}
 	},
 	battletestclearhelp: ["/battletestclear (/btc) [user]: Declares that you have completed a battletest for a person."],
+	
+	bth: 'battletesthelp',
+	battletesthelp: function (target, room, user) {
+		this.sendReply("/battletest (/bt) [user]: Declares to the chat room that you are starting a battle test for a person." + <tr \> +
+		"/battletestclear (/btc) [user]: Declares that you have completed a battletest for a person.");
+	},
 };

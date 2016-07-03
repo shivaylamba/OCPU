@@ -658,7 +658,7 @@ exports.commands = {
 		pmAll(target);
 		Rooms('staff').add("(" + Tools.escapeHTML(user.name) + " has PMed all: " + Tools.escapeHTML(target).replace("&apos;", "'") + ")").update();
 	},
-	credit: 'credits',
+	/*credit: 'credits',
 	credits: function (target, room, user) {
 		let popup = "|html|" + "<font size=5> Server Credits</font><br />" +
 					"<u>Owners:</u><br />" +
@@ -1254,7 +1254,7 @@ exports.commands = {
 		return this.sendReply("Poof is now enabled.");
 	},
 	// Profile command by jd, updated by panpawn
-	profile: function (target, room, user) {
+	/*profile: function (target, room, user) {
 		if (!target) target = user.name;
 		if (toId(target).length > 19) return this.sendReply("Usernames may not be more than 19 characters long.");
 		if (toId(target).length < 1) return this.sendReply(target + " is not a valid username.");
@@ -1311,7 +1311,7 @@ exports.commands = {
 			self.sendReplyBox(profile);
 			room.update();
 		}
-	},
+	},*/
 	advertise: 'advertisement',
 	advertisement: function (target, room, user, connection, cmd) {
 		if (room.id !== 'lobby') return this.errorReply("This command can only be used in the Lobby.");

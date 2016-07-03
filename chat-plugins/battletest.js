@@ -41,9 +41,19 @@ exports.commands = {
 	},
 	battletestclearhelp: ["/battletestclear (/btc) [user]: Declares that you have completed a battletest for a person."],
 	
-	bth: 'battletesthelp',
-	battletesthelp: function (target, room, user) {
-		this.sendReply("/battletest (/bt) [user]: Declares to the chat room that you are starting a battle test for a person." + <tr \> +
-		"/battletestclear (/btc) [user]: Declares that you have completed a battletest for a person.");
+	btgt: 'battletestgymtrainer',
+	battletestymtrainer: function (target, room, user) {
+		target = this.splitTarget(target, true);
+		let targetUser = this.targetUser;
+		let name = this.targetUsername;
+		let usseid = toId(name);
+		
+		if (!this can('roomvoice')) return this.errorReply('You do not have access to this command.');
+		if (!this.canTalk()) return this.errorReply('You cannot do this command while you are unable to talk!');
+		
+		this.add(name + ' has become a Gym Trainer!');
+		
+		//Insert Promotion Code Here Later
 	},
+	}
 };

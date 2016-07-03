@@ -9,7 +9,7 @@ let shop = [
 	['Fix', 'Buys the ability to alter your current custom avatar or trainer card. (don\'t buy if you have neither)', 10],
 	['Avatar', 'Buys an custom avatar to be applied to your name (You supply. Images larger than 80x80 may not show correctly)', 20],
 	['League Room', 'Buys a room at a reduced rate for use with a league.  A roster must be supplied with at least 10 members for this room.', 25],
-	['info box', 'Buys an infobox that will be viewable with a command.', 25],
+	['Info Box', 'Buys an infobox that will be viewable with a command.', 25],
 	['Trainer', 'Buys a trainer card which shows information through a command. (You supply, can be refused)', 40],
 	['Staff Help', 'Staff member will help set up roomintros and anything else needed in a room. Response may not be immediate.', 50],
 	['Icon', 'Buy a custom icon that can be applied to the rooms you want. You must take into account that the provided image should be 32 x 32', 75],

@@ -11,7 +11,7 @@ const forever = require('forever');
 // misc
 const serverIp = '50.25.8.64';
 const formatHex = '#566'; //hex code for the formatting of the command
-const ADVERTISEMENT_COST = 10; // how much does /advertise cost to use?
+const ADVERTISEMENT_COST = 30; // how much does /advertise cost to use?
 
 let regdateCache = {};
 fs.createWriteStream('badges.txt', {
@@ -658,26 +658,22 @@ exports.commands = {
 		pmAll(target);
 		Rooms('staff').add("(" + Tools.escapeHTML(user.name) + " has PMed all: " + Tools.escapeHTML(target).replace("&apos;", "'") + ")").update();
 	},
-	/*credit: 'credits',
+	credit: 'credits',
 	credits: function (target, room, user) {
 		let popup = "|html|" + "<font size=5> Server Credits</font><br />" +
 					"<u>Owners:</u><br />" +
-					"- " + .nameColor('panpawn', true) + " (Founder, Sysadmin, Development, Lead Policy)<br />" +
+					"- " + .nameColor('zellman01', true) + " (Founder, Sysadmin, Development, Lead Policy)<br />" +
 					"<br />" +
 					"<u>Development:</u><br />" +
-					"- " + .nameColor('panpawn', true) + " (Owner of GitHub repository)<br />" +
-					"- " + .nameColor('Silveee', true) + " (Contributor)<br />" +
-					"- " + .nameColor('jd', true) + " (Collaborator)<br />" +
+					"- " + .nameColor('zellman01', true) + " (Owner of GitHub repository)<br />" +
+					"- " + .nameColor('Rainy Thunder', true) + " (Contributor)<br />" +
 					"<br />" +
 					"<u>Special Thanks:</u><br />" +
 					"- Current staff team<br />" +
 					"- Our regular users<br />" +
-					"- " + .nameColor('snow', true) + " (Policy administrator)<br />" +
-					"- " + .nameColor('pitcher', true) + " (Former co-owner)<br />" +
-					"- " + .nameColor('PixelatedPaw', true) + " (One of the original administrators)";
 		user.popup(popup);
 	},
-	regdate: function (target, room, user, connection) {
+	/*regdate: function (target, room, user, connection) {
 		if (toId(target).length < 1 || toId(target).length > 19) return this.sendReply("Usernames may not be less than one character or longer than 19");
 		if (!this.runBroadcast()) return;
 		regdate(target, date => {
@@ -1258,7 +1254,7 @@ exports.commands = {
 		return this.sendReply("Poof is now enabled.");
 	},
 	// Profile command by jd, updated by panpawn
-	/*profile: function (target, room, user) {
+	profile: function (target, room, user) {
 		if (!target) target = user.name;
 		if (toId(target).length > 19) return this.sendReply("Usernames may not be more than 19 characters long.");
 		if (toId(target).length < 1) return this.sendReply(target + " is not a valid username.");
@@ -1315,7 +1311,7 @@ exports.commands = {
 			self.sendReplyBox(profile);
 			room.update();
 		}
-	},*/
+	},
 	advertise: 'advertisement',
 	advertisement: function (target, room, user, connection, cmd) {
 		if (room.id !== 'lobby') return this.errorReply("This command can only be used in the Lobby.");

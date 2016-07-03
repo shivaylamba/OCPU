@@ -46,7 +46,7 @@ exports.commands = {
 		target = this.splitTarget(target, true);
 		let targetUser = this.targetUser;
 		let name = this.targetUsername;
-		let usseid = toId(name);
+		let userid = toId(name);
 		
 		if (!this can('roomvoice')) return this.errorReply('You do not have access to this command.');
 		if (!this.canTalk()) return this.errorReply('You cannot do this command while you are unable to talk!');

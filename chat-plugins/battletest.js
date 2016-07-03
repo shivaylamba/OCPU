@@ -43,16 +43,6 @@ exports.commands = {
 	
 	btgt: 'battletestgymtrainer',
 	battletestymtrainer: function (target, room, user) {
-		target = this.splitTarget(target, true);
-		let targetUser = this.targetUser;
-		let name = this.targetUsername;
-		let userid = toId(name);
-		
-		if (!this can('roomvoice')) return this.errorReply('You do not have access to this command.');
-		if (!this.canTalk()) return this.errorReply('You cannot do this command while you are unable to talk!');
-		
-		this.add(name + ' has become a Gym Trainer!');
-		
-		//Insert Promotion Code Here Later
+		popupReply('Currently working on this command.');
 	},
 };

@@ -55,5 +55,4 @@ exports.commands = {
 		
 		//Insert Promotion Code Here Later
 	},
-	}
 };

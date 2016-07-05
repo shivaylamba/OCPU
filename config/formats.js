@@ -8,6 +8,13 @@ exports.Formats = [
 	//Server Exclusive
 	///////////////////////////////////////////////////////////////////
 	{
+		name: "Beta Test",
+		desc: ["This is only used by zellman01 to test some things out. If anyone else uses it, they will get locked."],
+		section: "Server Exclusive",
+		
+		banlist: ['Soul Dew'],
+	},
+	{
 		name: "No-Reveal OU",
 		desc: ["Like OU, but no pokemon are revealed."],
 		section: "Server Exclusive",

@@ -62,6 +62,10 @@ exports.commands = {
 		user.forceRename(newName, user.registered);
 		user.updateIdentity();
 		user.isAway = true;
+		
+		if (user.rank === "@" || user.rank === "&" || user.rank === "~") {
+			this.parse('/hide')
+		}
 	},
 
 	back: function (target, room, user) {
@@ -82,6 +86,9 @@ exports.commands = {
 		user.updateIdentity();
 		user.isAway = false;
 		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(newName) + "</strong></font> is no longer away for " + status.toLowerCase() + ".");
+		if (user.rank === "@" || user.rank === "&" || user.rank === "~") {
+			this.parse('/show')
+		}
 	},
 
 	afk: function (target, room, user) {

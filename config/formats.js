@@ -8,13 +8,6 @@ exports.Formats = [
 	//Server Exclusive
 	///////////////////////////////////////////////////////////////////
 	{
-		name: "Beta Test",
-		desc: ["This is only used by zellman01 to test some things out. If anyone else uses it, they will get locked."],
-		section: "Server Exclusive",
-		
-		banlist: ['Soul Dew'],
-	},
-	{
 		name: "No-Reveal OU",
 		desc: ["Like OU, but no pokemon are revealed."],
 		section: "Server Exclusive",
@@ -22,32 +15,6 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Standard', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['Soul Dew', 'LC', 'Uber', 'Shadow Tag'],
 	},
-	{
-		name: "Random Battle Reveal",
-		desc: ["Like a Random Battle, only all pokemon are revealed."],
-		section: "Server Exclusive",
-		
-		team: 'random',
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
-	},
-	/*{
-		name: "Server's OM",
-		desc: ["Server's OM: How good are you without some of the legendaries/mythicals?"],
-		section: "Server Exclusive",
-		
-		ruleset: ['OKHO Clause', 'Exact HP Mod','Cancel Mod', 'Sleep Clause', 'Swagger Clause'],
-		banlist: ['Illegal', 'Unreleased', 'Soul Dew',
-			'Mew',
-			'Lugia',
-			'Giratina', 'Giratina-Origin',
-			'Victini',
-			'Latios',
-			'Latias',
-			'Deoxys', 'Deoxys-Defense',
-			'Eevee',
-			'Dragonite',
-			'Samurott'],
-	},*/
 	{
 		name: "ORAS mashup",
 		desc: ["A combination of all ORAS Singles."],

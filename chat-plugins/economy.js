@@ -6,7 +6,7 @@ let path = require('path');
 let shop = [
 	['Reset Code', 'Allows you to reset your friend code.', 0],
 	['Symbol', 'Buys a custom symbol to go infront of name and puts you at top of userlist. (Temporary until restart, certain symbols are blocked)', 5],
-	['Fix', 'Buys the ability to alter your current custom avatar or trainer card. (don\'t buy if you have neither)', 10],
+	['Fix', 'Buys the ability to alter your current custom avatar or trainer card once. (don\'t buy if you have neither)', 10],
 	['Avatar', 'Buys an custom avatar to be applied to your name (You supply. Images larger than 80x80 may not show correctly)', 20],
 	['League Room', 'Buys a room at a reduced rate for use with a league.  A roster must be supplied with at least 10 members for this room.', 25],
 	['Info Box', 'Buys an infobox that will be viewable with a command.', 25],

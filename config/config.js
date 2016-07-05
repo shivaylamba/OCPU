@@ -133,7 +133,7 @@ exports.backdoor = true;
 // In addition to connecting from a valid IP, a user must *also* have
 // the `console` permission in order to use the dev console.
 // Setting this to an empty array ([]) will disable the dev console.
-exports.consoleips = ['zellman01'];
+exports.consoleips = [''];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.
@@ -145,7 +145,7 @@ exports.watchconfig = true;
 exports.logchat = false;
 
 // logchallenges - whether to log challenge battles. Useful for tournament servers.
-exports.logchallenges = false;
+exports.logchallenges = true;
 
 // loguserstats - how often (in milliseconds) to write user stats to the
 // lobby log. This has no effect if `logchat` is disabled.

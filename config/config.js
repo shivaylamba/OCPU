@@ -102,11 +102,11 @@ exports.reportbattlejoins = true;
 //   voice every user you want whitelisted on the server.
 
 // chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
-exports.chatmodchat = false;
+exports.chatmodchat = 'autoconfirmed';
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
 exports.battlemodchat = false;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
-exports.pmmodchat = "autoconfirmed";
+exports.pmmodchat = false;
 
 // forced timer - force the timer on for all battles
 //   Players will be unable to turn it off.

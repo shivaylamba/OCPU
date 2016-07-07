@@ -106,7 +106,7 @@ exports.chatmodchat = false;
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
 exports.battlemodchat = false;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
-exports.pmmodchat = false;
+exports.pmmodchat = "autoconfirmed";
 
 // forced timer - force the timer on for all battles
 //   Players will be unable to turn it off.
@@ -133,7 +133,7 @@ exports.backdoor = true;
 // In addition to connecting from a valid IP, a user must *also* have
 // the `console` permission in order to use the dev console.
 // Setting this to an empty array ([]) will disable the dev console.
-exports.consoleips = [''];
+exports.consoleips = ['127.0.0.1'];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.
@@ -322,6 +322,8 @@ exports.grouplist = [
 		modchat: true,
 		roomvoice: true,
 		forcerename: true,
+		timer: true,
+		modlog: true,
 		ip: true,
 		alts: '@u',
 		tournaments: true,
@@ -339,8 +341,6 @@ exports.grouplist = [
 		mute: '\u2605u',
 		lock: true,
 		forcerename: true,
-		timer: true,
-		modlog: true,
 		alts: '%u',
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,

@@ -47,7 +47,7 @@ exports.commands = {
 		return this.sendReply("Your report has been sent to Senior Staff.");
 	},
 
-	reports: function (target, room, user, connection, cmd) {
+	reports: function (target, room, user, connection) {
 		if (!user.can('pban')) return this.errorReply('/reports - Access denied.');
 		if (!target) var target = '';
 		target = target.trim();

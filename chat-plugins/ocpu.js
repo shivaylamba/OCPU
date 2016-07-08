@@ -682,7 +682,7 @@ exports.commands = {
 		});
 	},*/
 	removebadge: function (target, room, user) {
-		if (!this.can('pban')) return false;
+		if (!this.can('forcewin')) return false;
 		target = this.splitTarget(target);
 		let targetUser = this.targetUser;
 		if (!target) return this.sendReply('/removebadge [user], [badge] - Removes a badge from a user.');
@@ -728,7 +728,7 @@ exports.commands = {
 		this.parse('/removebadge ' + target + ', vip');
 	},
 	givebadge: function (target, room, user) {
-		if (!this.can('pban')) return false;
+		if (!this.can('forcewin')) return false;
 		target = this.splitTarget(target);
 		let targetUser = this.targetUser;
 		if (!targetUser) return this.sendReply('There is no user named ' + this.targetUsername + '.');

@@ -175,7 +175,7 @@ class Ladder {
 		// lose games. Larger K means more change.
 		// In the "original" Elo, K is constant, but it's common for K to
 		// get smaller as your rating goes up
-		let K = 50;
+		let K = 25;
 
 		// dynamic K-scaling (optional)
 		if (elo < 1200) {

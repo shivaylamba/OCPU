@@ -791,7 +791,7 @@ class Tournament {
 		//
 
 		let color = '#088cc7';
-		let sizeRequiredToEarn = 4;
+		let sizeRequiredToEarn = 2;
 		let currencyName = function (amount) {
 			let name = " buck";
 			return amount === 7 ? name : name + "s";

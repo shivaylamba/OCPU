@@ -102,7 +102,7 @@ exports.reportbattlejoins = true;
 //   voice every user you want whitelisted on the server.
 
 // chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
-exports.chatmodchat = false;
+exports.chatmodchat = 'autoconfirmed';
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
 exports.battlemodchat = false;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
@@ -133,7 +133,7 @@ exports.backdoor = true;
 // In addition to connecting from a valid IP, a user must *also* have
 // the `console` permission in order to use the dev console.
 // Setting this to an empty array ([]) will disable the dev console.
-exports.consoleips = ['zellman01'];
+exports.consoleips = ['127.0.0.1'];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.
@@ -145,7 +145,7 @@ exports.watchconfig = true;
 exports.logchat = false;
 
 // logchallenges - whether to log challenge battles. Useful for tournament servers.
-exports.logchallenges = false;
+exports.logchallenges = true;
 
 // loguserstats - how often (in milliseconds) to write user stats to the
 // lobby log. This has no effect if `logchat` is disabled.
@@ -309,6 +309,7 @@ exports.grouplist = [
 		disableladder: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
+		bypassblocks: 'u%@&',
 		customavatar: true,
 		trainercard: true,
 	},
@@ -322,8 +323,11 @@ exports.grouplist = [
 		modchat: true,
 		roomvoice: true,
 		forcerename: true,
+		timer: true,
+		modlog: true,
 		ip: true,
 		alts: '@u',
+		bypassblocks: 'u%@',
 		tournaments: true,
 		game: true,
 	},
@@ -339,10 +343,8 @@ exports.grouplist = [
 		mute: '\u2605u',
 		lock: true,
 		forcerename: true,
-		timer: true,
-		modlog: true,
 		alts: '%u',
-		bypassblocks: 'u%@&~',
+		bypassblocks: 'u%',
 		receiveauthmessages: true,
 		tournamentsmoderation: true,
 		jeopardy: true,
@@ -355,7 +357,6 @@ exports.grouplist = [
 		name: "Player",
 		inherit: '+',
 		roomvoice: true,
-		joinbattle: true,
 		joinbattle: true,
 	},
 	{

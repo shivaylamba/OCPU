@@ -58,5 +58,17 @@ exports.commands = {
 			return;
 		}
 	},
-	battletestfailhelp: ["/battletestfail (/btf) [user]: Declares that a person has failed a battle test."]
+	battletestfailhelp: ["/battletestfail (/btf) [user]: Declares that a person has failed a battle test."],
+	
+	//Displays all battle test commands. Extremly helpful, except for the fact that it doesn't work right now.
+	bth: 'battletesthelp',
+	battletesthelp: function (target, room, user) {
+		this.sendReply("Currently working on other commands for this. Will be completed once this command says somethign else other than this.");
+	},
+	
+	//Checks all command versions. Not very helpful.
+	btv: 'battletestversion',
+	battletestversion: function (target, room, user) {
+		this.popupReply("All commands are in the Alpha stage. None are completed.");
+	},
 };

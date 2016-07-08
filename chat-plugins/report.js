@@ -107,7 +107,6 @@ exports.commands = {
 				saveReports();
 				this.sendReply("That report has been deleted.");
 				break;
-			case '':
 			case 'help':
 				if (!this.runBroadcast()) return;
 				this.sendReplyBox(

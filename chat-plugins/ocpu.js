@@ -674,7 +674,7 @@ exports.commands = {
 					"<br />" +
 					"<u>Special Thanks:</u><br />" +
 					"- Current staff team<br />" +
-					"- Our regular users<br />" +
+					"- Our regular users<br />";
 		user.popup(popup);
 	},
 	/*regdate: function (target, room, user, connection) {

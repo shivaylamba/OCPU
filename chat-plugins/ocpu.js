@@ -1,7 +1,10 @@
+/* Because it was forgotten to be placed: heavy credits to Gold/Wisp for code. */
+
 'use strict';
 
 // modules
 const fs = require('fs');
+const MD5 = require('MD5');
 const moment = require('moment');
 const http = require('http');
 const https = require('https');
@@ -325,12 +328,12 @@ exports.commands = {
 		for (let u in room.users) {
 			if (!Users.get(u) || !Users.get(u).connected) continue;
 			users.push(u);
-			Users.get(u).leaveRoom(room, Users.get(u).connections[0]);
+			Users(u).leaveRoom(room, Users.get(u).connections[0]);
 		}
 		len = users.length;
-		setTimeout(function () {
+		setTimeout(() => {
 			while (len--) {
-				Users.get(users[len]).joinRoom(room, Users.get(users[len]).connections[0]);
+				Users(users[len]).joinRoom(room, Users(users[len]).connections[0]);
 			}
 		}, 1000);
 	},
@@ -658,7 +661,7 @@ exports.commands = {
 		pmAll(target);
 		Rooms('staff').add("(" + Tools.escapeHTML(user.name) + " has PMed all: " + Tools.escapeHTML(target).replace("&apos;", "'") + ")").update();
 	},
-	/*credit: 'credits',
+	credit: 'credits',
 	credits: function (target, room, user) {
 		let popup = "|html|" + "<font size=5> Server Credits</font><br />" +
 					"<u>Owners:</u><br />" +
@@ -666,6 +669,7 @@ exports.commands = {
 					"<br />" +
 					"<u>Development:</u><br />" +
 					"- " + nameColor('zellman01', true) + " (Owner of GitHub repository)<br />" +
+					"- " + nameColor('Mystifi', true) + " (Contributor)<br />" +
 					"- " + nameColor('Rainy Thunder', true) + " (Contributor)<br />" +
 					"<br />" +
 					"<u>Special Thanks:</u><br />" +
@@ -687,10 +691,9 @@ exports.commands = {
 		let targetUser = this.targetUser;
 		if (!target) return this.sendReply('/removebadge [user], [badge] - Removes a badge from a user.');
 		if (!targetUser) return this.sendReply('There is no user named ' + this.targetUsername + '.');
-		let self = this;
 		let type_of_badges = ['admin', 'bot', 'dev', 'vip', 'artist', 'mod', 'leader', 'champ', 'creator', 'comcun', 'twinner', 'goodra', 'league', 'fgs'];
 		if (type_of_badges.indexOf(target) > -1 === false) return this.sendReply('The badge ' + target + ' is not a valid badge.');
-		fs.readFile('badges.txt', 'utf8', function (err, data) {
+		fs.readFile('badges.txt', 'utf8', (err, data) => {
 			if (err) console.log(err);
 			let match = false;
 			let currentbadges = '';
@@ -710,12 +713,12 @@ exports.commands = {
 				let re = new RegExp(line, 'g');
 				currentbadges = currentbadges.replace(target, '');
 				let newdata = data.replace(re, targetUser.userid + ':' + currentbadges);
-				fs.writeFile('badges.txt', newdata, 'utf8', function (err, data) {
+				fs.writeFile('badges.txt', newdata, 'utf8', (err, data) => {
 					if (err) console.log(err);
-					return self.sendReply('You have removed the badge ' + target + ' from the user ' + targetUser + '.');
+					return this.sendReply('You have removed the badge ' + target + ' from the user ' + targetUser + '.');
 				});
 			} else {
-				return self.sendReply('There is no match for the user ' + targetUser + '.');
+				return this.sendReply('There is no match for the user ' + targetUser + '.');
 			}
 		});
 	},
@@ -733,10 +736,9 @@ exports.commands = {
 		let targetUser = this.targetUser;
 		if (!targetUser) return this.sendReply('There is no user named ' + this.targetUsername + '.');
 		if (!target) return this.sendReply('/givebadge [user], [badge] - Gives a badge to a user. Requires: &~');
-		let self = this;
 		let type_of_badges = ['admin', 'bot', 'dev', 'vip', 'mod', 'artist', 'leader', 'champ', 'creator', 'comcun', 'twinner', 'league', 'fgs'];
 		if (type_of_badges.indexOf(target) > -1 === false) return this.sendReply('Ther is no badge named ' + target + '.');
-		fs.readFile('badges.txt', 'utf8', function (err, data) {
+		fs.readFile('badges.txt', 'utf8', (err, data) => {
 			if (err) console.log(err);
 			let currentbadges = '';
 			let line = '';
@@ -755,16 +757,16 @@ exports.commands = {
 				if (currentbadges.indexOf(target) > -1) return self.errorReply('This user already already has the badge ' + target + '.');
 				let re = new RegExp(line, 'g');
 				let newdata = data.replace(re, targetUser.userid + ':' + currentbadges + target);
-				fs.writeFile('badges.txt', newdata, function (err, data) {
+				fs.writeFile('badges.txt', newdata, (err, data) => {
 					if (err) console.log(err);
-					self.sendReply('You have given the badge ' + target + ' to the user ' + targetUser + '.');
+					this.sendReply('You have given the badge ' + target + ' to the user ' + targetUser + '.');
 					targetUser.send('You have recieved the badge ' + target + ' from the user ' + user.userid + '.');
 					room.addRaw(targetUser + ' has recieved the ' + target + ' badge from ' + user.name);
 				});
 			} else {
-				fs.appendFile('badges.txt', '\n' + targetUser.userid + ':' + target, function (err) {
+				fs.appendFile('badges.txt', '\n' + targetUser.userid + ':' + target, err => {
 					if (err) console.log(err);
-					self.sendReply('You have given the badge ' + target + ' to the user ' + targetUser + '.');
+					this.sendReply('You have given the badge ' + target + ' to the user ' + targetUser + '.');
 					targetUser.send('You have recieved the badge ' + target + ' from the user ' + user.userid + '.');
 				});
 			}
@@ -806,8 +808,7 @@ exports.commands = {
 		let twinner = '<img src="http://www.smogon.com/media/forums/images/badges/spl.png" title="Tournament Winner">';
 		let vip = '<img src="http://www.smogon.com/media/forums/images/badges/zeph.png" title="VIP">';
 		let bot = '<img src="http://www.smogon.com/media/forums/images/badges/mind.png" title=" Bot Hoster">';
-		let self = this;
-		fs.readFile('badges.txt', 'utf8', function (err, data) {
+		fs.readFile('badges.txt', 'utf8', (err, data) => {
 			if (err) console.log(err);
 			let row = ('' + data).split('\n');
 			let match = false;
@@ -834,10 +835,10 @@ exports.commands = {
 				if (currentbadges.indexOf('twinner') > -1) badgelist += ' ' + twinner;
 				if (currentbadges.indexOf('vip') > -1) badgelist += ' ' + vip;
 				if (currentbadges.indexOf('bot') > -1) badgelist += ' ' + bot;
-				self.sendReplyBox(targetUser.userid + "'s badges: " + badgelist);
+				this.sendReplyBox(targetUser.userid + "'s badges: " + badgelist);
 				room.update();
 			} else {
-				self.sendReplyBox('User ' + targetUser.userid + ' has no badges.');
+				this.sendReplyBox('User ' + targetUser.userid + ' has no badges.');
 				room.update();
 			}
 		});
@@ -1009,16 +1010,13 @@ exports.commands = {
 	dubtrackfm: 'dubtrack',
 	dubtrack: function (target, room, user) {
 		if (!this.runBroadcast()) return;
-
 		let nowPlaying = "";
-
 		let options = {
 			host: 'api.dubtrack.fm',
 			port: 443,
 			path: '/room/enrod-radio-tower',
 			method: 'GET',
 		};
-
 		https.get(options, res => {
 			let data = '';
 			res.on('data', chunk => {
@@ -1232,7 +1230,7 @@ exports.commands = {
 		message = message.replace(/{{user}}/g, user.name);
 		if (!this.canTalk(message)) return false;
 
-		let colour = '#' + [1, 1, 1].map(function () {
+		let colour = '#' + [1, 1, 1].map(() => {
 			let part = Math.floor(Math.random() * 0xaa);
 			return (part < 0x10 ? '0' : '') + part.toString(16);
 		}).join('');
@@ -1278,7 +1276,7 @@ exports.commands = {
 			return (Economy.readMoneySync(user) ? Economy.readMoneySync(user) : 0);
 		};
 		let regdate = "(Unregistered)";
-	regdate(userid, date => {
+		regdate(userid, date => {
 			if (date) {
 				regdate = moment(date).format("MMMM DD, YYYY");
 			}
@@ -1349,32 +1347,31 @@ exports.commands = {
 		let validTargets = ['cat', 'otter', 'dog', 'bunny', 'pokemon', 'kitten', 'puppy'];
 		if (room.id === 'lobby') return this.errorReply("This command cannot be broadcasted in the Lobby.");
 		if (!validTargets.includes(tarId)) return this.parse('/help animals');
-		let self = this;
-		let reqOpt = {
+		let reqOpts = {
 			hostname: 'api.giphy.com', // Do not change this
 			path: '/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + tarId,
 			method: 'GET',
 		};
-		let req = http.request(reqOpt, function (res) {
-			res.on('data', function (chunk) {
+		let request = http.request(reqOpts, response => {
+			response.on('data', chunk => {
 				try {
 					let data = JSON.parse(chunk);
 					let output = '<center><img src="' + data.data["image_url"] + '" width="50%"></center>';
-					if (!self.runBroadcast()) return;
+					if (!this.runBroadcast()) return;
 					if (data.data["image_url"] === undefined) {
-						self.errorReply("ERROR CODE 404: No images found!");
+						this.errorReply("ERROR CODE 404: No images found!");
 						return room.update();
 					} else {
-						self.sendReplyBox(output);
+						this.sendReplyBox(output);
 						return room.update();
 					}
 				} catch (e) {
-					self.errorReply("ERROR CODE 503: Giphy is unavaliable right now. Try again later.");
+					this.errorReply("ERROR CODE 503: Giphy is unavaliable right now. Try again later.");
 					return room.update();
 				}
 			});
 		});
-		req.end();
+		request.end();
 	},
 	animalshelp: ['Animals Plugin by DarkNightSkies & Kyv.n(♥)',
 		'/animals cat - Displays a cat.',
@@ -1486,16 +1483,261 @@ exports.commands = {
 	*/
 };
 
-function loadRegdateCache() {
+let colorCache = {};
+let customColors = {};
+
+let mainCustomColors = {
+	'theimmortal': 'taco',
+	'bmelts': 'testmelts',
+	'zarel': 'aeo',
+	'zarell': 'aeo',
+	'greatsage': 'test454',
+	// 'snowflakes': 'snowflake',
+	'jumpluff': 'zacchaeus',
+	'zacchaeus': 'jumpluff',
+	'kraw': 'kraw1',
+	'growlithe': 'steamroll',
+	'snowflakes': 'endedinariot',
+	'doomvendingmachine': 'theimmortal',
+	'mikel': 'mikkel',
+	'arcticblast': 'rsem',
+	'mjb': 'thefourthchaser',
+	'thefourthchaser': 'mjb',
+	'tfc': 'mjb',
+	'mikedecishere': 'mikedec3boobs',
+	'heartsonfire': 'haatsuonfaiyaa',
+	'royalty': 'wonder9',
+	// 'osiris': 'yamraiha',
+	'limi': 'azure2',
+	'haunter': 'cathy',
+	'ginganinja': 'piratesandninjas',
+	'aurora': 'c6n6fek',
+	'jdarden': 'danielcross',
+	'solace': 'amorlan',
+	'dcae': 'galvatron',
+	'queenofrandoms': 'hahaqor',
+	'jelandee': 'thejelandee',
+	'diatom': 'dledledlewhooop',
+	// 'waterbomb': 'wb0',
+	'texascloverleaf': 'aggronsmash',
+	'treecko': 'treecko56',
+	'treecko37': 'treecko56',
+	'violatic': 'violatic92',
+	'exeggutor': 'ironmanatee',
+	'ironmanatee': 'exeggutor',
+	// 'shamethat': 'aaa10',
+	'skylight': 'aerithass',
+	// 'prem': 'premisapieceofshit',
+	'goddessbriyella': 'jolteonxvii', // third color change
+	'nekonay': 'catbot20',
+	'coronis': 'kowonis',
+	'vaxter': 'anvaxter',
+	'mattl': 'mattl34',
+	'shaymin': 'test33',
+	// 'orphic': 'dmt6922',
+	'kayo': 'endedinariot',
+	'tgmd': 'greatmightydoom',
+	'vacate': 'vacatetest',
+	'bean': 'dragonbean',
+	'yunan': 'osiris13',
+	'politoed': 'brosb4hoohs',
+	'scotteh': 'nsyncluvr67',
+	'bumbadadabum': 'styrofoamboots',
+	'yuihirasawa': 'weeabookiller',
+	'monohearted': 'nighthearted',
+	'prem': 'erinanakiri', // second color change
+	'clefairy': 'fuckes',
+	'morfent': 'aaaa',
+	'crobat': 'supergaycrobat4',
+	'beowulf': '298789z7z',
+	'flippy': 'flippo',
+	'raoulsteve247': 'raoulbuildingpc',
+	'thedeceiver': 'colourtest011',
+	'darnell': 'ggggggg',
+	'shamethat': 'qpwkfklkjpskllj', // second color change
+	'aipom': 'wdsddsdadas',
+	'alter': 'spakling',
+	'biggie': 'aoedoedad',
+	'osiris': 'osiris12', // second color change
+	'azumarill': 'azumarill69',
+	'redew': 'redeww',
+	'sapphire': 'masquerains',
+	'calyxium': 'calyxium142',
+	'kiracookie': 'kracookie',
+	'blitzamirin': 'hikaruhitachii',
+	'skitty': 'shckieei',
+	'sweep': 'jgjjfgdfg', // second color change
+	'panpawn': 'crowt',
+	'val': 'pleasegivemecolorr',
+	'valentine': 'pleasegivemecolorr',
+	'briayan': 'haxorusxi',
+	'xzern': 'mintycolors',
+	'shgeldz': 'cactusl00ver',
+	'abra': 'lunchawaits',
+	'maomiraen': 'aaaaaa',
+	'trickster': 'sunako',
+	'articuno': 'bluekitteh177',
+	// 'antemortem': 'abc11092345678',
+	'scene': 'aspire',
+	'barton': 'hollywood15',
+	// 'psych': 'epicwome',
+	'zodiax': 'coldeann',
+	'ninetynine': 'blackkkk',
+	'kasumi': 'scooter4000',
+	'xylen': 'bloodyrevengebr',
+	'aelita': 'y34co3',
+	'fx': 'cm48ubpq',
+	'horyzhnz': 'superguy69',
+	'quarkz': 'quarkz345',
+	'fleurdyleurse': 'calvaryfishes',
+	'trinitrotoluene': '4qpr7pc5mb',
+	'rekeri': 'qgadlu6g',
+	'austin': 'jkjkjkjkjkgdl',
+	'jinofthegale': 'cainvelasquez',
+	'waterbomb': 'naninan',
+	'starbloom': 'taigaaisaka',
+	'macle': 'flogged',
+	'ashiemore': 'poncp',
+	'charles': 'charlescarmichael',
+	'sigilyph': 'ek6',
+	'spy': 'spydreigon',
+	'kinguu': 'dodmen',
+	'dodmen': 'kinguu',
+	'halite': 'cjilkposqknolssss',
+	'magnemite': 'dsfsdffs',
+	'ace': 'sigilyph143',
+	'leftiez': 'xxxxnbbhiojll',
+	'grim': 'grimoiregod',
+	'strength': '0v0tqpnu',
+	'advantage': 'nsyncluvr67',
+	'quote': 'quotecs',
+	'snow': 'q21yzqgh',
+	'omegaxis': 'omegaxis14',
+	'paradise': 'rnxvzwpwtz',
+	'sailorcosmos': 'goldmedalpas',
+	'dontlose': 'dhcli22h',
+	'tatsumaki': 'developmentary',
+	'starry': 'starryblanket',
+	'cathy': '' //{color: '#ff5cb6'}
+};
+
+global.hashColor = function (name) {
+	name = toId(name);
+	if (customColors[name]) return customColors[name];
+	if (mainCustomColors[name]) name = mainCustomColors[name];
+	if (colorCache[name]) return colorCache[name];
+	let hash = MD5(name);
+	let H = parseInt(hash.substr(4, 4), 16) % 360; // 0 to 360
+	let S = parseInt(hash.substr(0, 4), 16) % 50 + 40; // 40 to 89
+	let L = Math.floor(parseInt(hash.substr(8, 4), 16) % 20 + 30); // 30 to 49
+	let C = (100 - Math.abs(2 * L - 100)) * S / 100 / 100;
+	let X = C * (1 - Math.abs((H / 60) % 2 - 1));
+	let m = L / 100 - C / 2;
+	let R1, G1, B1;
+	switch (Math.floor(H / 60)) {
+		case 1: R1 = X; G1 = C; B1 = 0; break;
+		case 2: R1 = 0; G1 = C; B1 = X; break;
+		case 3: R1 = 0; G1 = X; B1 = C; break;
+		case 4: R1 = X; G1 = 0; B1 = C; break;
+		case 5: R1 = C; G1 = 0; B1 = X; break;
+		case 0: default: R1 = C; G1 = X; B1 = 0; break;
+	}
+	let lum = (R1 + m) * 0.2126 + (G1 + m) * 0.7152 + (B1 + m) * 0.0722; // 0.05 (dark blue) to 0.93 (yellow)
+	let HLmod = (lum - 0.5) * -100; // -43 (yellow) to 45 (dark blue)
+	if (HLmod > 12) {
+		HLmod -= 12;
+	} else if (HLmod < -10) {
+		HLmod = (HLmod + 10) * 2 / 3;
+	} else {
+		HLmod = 0;
+	}
+	L += HLmod;
+	let Smod = 10 - Math.abs(50 - L);
+	if (HLmod > 15) Smod += (HLmod - 15) / 2;
+	S -= Smod;
+	let rgb = hslToRgb(H, S, L);
+	colorCache[name] = "#" + rgbToHex(rgb.r, rgb.g, rgb.b);
+	return colorCache[name];
+};
+
+global.hslToRgb = function (h, s, l) {
+	let r, g, b, m, c, x;
+	if (!isFinite(h)) h = 0;
+	if (!isFinite(s)) s = 0;
+	if (!isFinite(l)) l = 0;
+	h /= 60;
+	if (h < 0) h = 6 - (-h % 6);
+	h %= 6;
+	s = Math.max(0, Math.min(1, s / 100));
+	l = Math.max(0, Math.min(1, l / 100));
+	c = (1 - Math.abs((2 * l) - 1)) * s;
+	x = c * (1 - Math.abs((h % 2) - 1));
+	if (h < 1) {
+		r = c;
+		g = x;
+		b = 0;
+	} else if (h < 2) {
+		r = x;
+		g = c;
+		b = 0;
+	} else if (h < 3) {
+		r = 0;
+		g = c;
+		b = x;
+	} else if (h < 4) {
+		r = 0;
+		g = x;
+		b = c;
+	} else if (h < 5) {
+		r = x;
+		g = 0;
+		b = c;
+	} else {
+		r = c;
+		g = 0;
+		b = x;
+	}
+	m = l - c / 2;
+	r = Math.round((r + m) * 255);
+	g = Math.round((g + m) * 255);
+	b = Math.round((b + m) * 255);
+	return {
+		r: r,
+		g: g,
+		b: b,
+	};
+};
+
+global.toHex = function (N) {
+	if (N === "null") return "00";
+	N = parseInt(N);
+	if (N == 0 || isNaN(N)) return "00";
+	N = Math.max(0, N);
+	N = Math.min(N, 255);
+	N = Math.round(N);
+	return "0123456789ABCDEF".charAt((N - N % 16) / 16) + "0123456789ABCDEF".charAt(N % 16);
+};
+
+global.rgbToHex = function (R, G, B) {
+	return toHex(R) + toHex(G) + toHex(B);
+};
+
+global.nameColor = function (name, bold) {
+	return (bold ? "<b>" : "") + "<font color=\"" + hashColor(name) + "\">" +
+	(Users(name) && Users(name).connected && Users.getExact(name) ? Tools.escapeHTML(Users.getExact(name).name) : Tools.escapeHTML(name)) +
+	"</font>" + (bold ? "</b>" : "");
+};
+
+global.loadRegdateCache = function() {
 	try {
 		regdateCache = JSON.parse(fs.readFileSync('config/regdate.json', 'utf8'));
 	} catch (e) {}
-}
+};
 loadRegdateCache();
 
-function saveRegdateCache() {
+global.saveRegdateCache = function() {
 	fs.writeFileSync('config/regdate.json', JSON.stringify(regdateCache));
-}
+};
 
 let bubbleLetterMap = new Map([
 	['a', '\u24D0'], ['b', '\u24D1'], ['c', '\u24D2'], ['d', '\u24D3'], ['e', '\u24D4'], ['f', '\u24D5'], ['g', '\u24D6'], ['h', '\u24D7'], ['i', '\u24D8'], ['j', '\u24D9'], ['k', '\u24DA'], ['l', '\u24DB'], ['m', '\u24DC'],
@@ -1513,7 +1755,7 @@ let asciiMap = new Map([
 	['\u2460', '1'], ['\u2461', '2'], ['\u2462', '3'], ['\u2463', '4'], ['\u2464', '5'], ['\u2465', '6'], ['\u2466', '7'], ['\u2467', '8'], ['\u2468', '9'], ['\u24EA', '0'],
 ]);
 
-function parseStatus(text, encoding) {
+global.parseStatus = function(text, encoding) {
 	if (encoding) {
 		text = text.split('').map(function (char) {
 			return bubbleLetterMap.get(char);
@@ -1524,9 +1766,9 @@ function parseStatus(text, encoding) {
 		}).join('');
 	}
 	return text;
-}
+};
 
-function hasBadge (user, badge) {
+global.hasBadge = function(user, badge) {
 	let data = fs.readFileSync('badges.txt', 'utf8');
 	let row = data.split('\n');
 	for (let i = row.length; i > -1; i--) {
@@ -1542,13 +1784,13 @@ function hasBadge (user, badge) {
 	}
 };
 
-function pmAll (message, pmName) {
-	pmName = (pmName ? pmName : '~ Server [Do not reply]');
+global.pmAll  = function (message, pmName) {
+	pmName = (pmName ? pmName : '~Server [Do not reply]');
 	Users.users.forEach(curUser => {
 		curUser.send('|pm|' + pmName + '|' + curUser.getIdentity() + '|' + message);
 	});
 };
-function pmStaff (message, from) {
+global.pmStaff = function (message, from) {
 	from = (from ? ' (PM from ' + from + ')' : '');
 	Users.users.forEach(curUser => {
 		if (curUser.isStaff) {
@@ -1556,7 +1798,7 @@ function pmStaff (message, from) {
 		}
 	});
 };
-function pmUpperStaff (message, pmName, from) {
+global.pmUpperStaff = function (message, pmName, from) {
 	pmName = (pmName ? pmName : '~Upper Staff PM');
 	from = (from ? ' (PM from ' + from + ')' : '');
 	Users.users.forEach(curUser => {
@@ -1570,24 +1812,20 @@ function pluralFormat (length, ending) {
 	if (isNaN(Number(length))) return false;
 	return (length === 1 ? '' : ending);
 };
-
-/*function regdate (target, callback) {
+global.regdate = function (target, callback) {
 	target = toId(target);
 	if (regdateCache[target]) return callback(regdateCache[target]);
-
 	let options = {
 		host: 'pokemonshowdown.com',
 		port: 80,
 		path: '/users/' + target + '.json',
 		method: 'GET',
 	};
-
-	http.get(options, function (res) {
+	http.get(options, response => {
 		let data = '';
-
-		res.on('data', function (chunk) {
+		response.on('data', chunk => {
 			data += chunk;
-		}).on('end', function () {
+		}).on('end', () => {
 			data = JSON.parse(data);
 			let date = data['registertime'];
 			if (date !== 0 && date.toString().length < 13) {
@@ -1602,9 +1840,8 @@ function pluralFormat (length, ending) {
 			callback((date === 0 ? false : date));
 		});
 	});
-};*/
-
-function reloadCSS () {
+};
+global.reloadCSS = function () {
 	let options = {
 		host: 'play.pokemonshowdown.com',
 		port: 80,
@@ -1614,10 +1851,10 @@ function reloadCSS () {
 	http.get(options);
 };
 
-function formatName(name) {
+global.formatName = function(name) {
 	if (Users.getExact(name) && Users(name).connected) {
 		return '<i>' + nameColor(Users.getExact(name).name, true) + '</i>';
 	} else {
 		return nameColor(name, false);
 	}
-}
+};

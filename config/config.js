@@ -324,7 +324,6 @@ exports.grouplist = [
 		roomvoice: true,
 		forcerename: true,
 		timer: true,
-		modlog: true,
 		ip: true,
 		alts: '@u',
 		bypassblocks: 'u%@',
@@ -349,6 +348,7 @@ exports.grouplist = [
 		tournamentsmoderation: true,
 		jeopardy: true,
 		joinbattle: true,
+		modlog: true,
 		minigame: true,
 	},
 	{

@@ -84,7 +84,6 @@ exports.commands = {
 			case 'decline':
 			case 'deny':
 				if (params.length < 1) return this.errorReply("Usage: /reports deny [id]");
-				let idNum = params.shift();
 				if (!Reports[id]) return this.errorReply("There's no report with that id.");
 				if (Reports[id].status !== 'Pending Staff') return this.errorReply("That report isn't pending staff.");
 				if (Users(Reports[id].reporter) && Users(Reports[id].reporter).connected) {
@@ -93,16 +92,16 @@ exports.commands = {
 				this.sendReply("You've denied the report by "+ Reports[id].reporter);
 				pmUpperStaff(user.name + " denied the report by " + Reports[id].reporter + ". (ID: " + id + ")");
 				Rooms('upperstaff').add(user.name + " denied the report by " + Reports[id].reporter + ". (ID: " + id + ")").update();
-				delete Reports[idNum];
+				delete Reports[id];
 				saveReports();
 				break;
 			case 'del':
 			case 'delete':
 				if (params.length < 1) return this.errorReply("Usage: /reports delete [id]");
-				if (!Reports[idNumber]) return this.errorReply("There's no report with that id.");
+				if (!Reports[id]) return this.errorReply("There's no report with that id.");
 				pmUpperStaff(user.name + " deleted the report by " + Reports[id].reporter + ". (ID: " + id + ")");
 				Rooms('upperstaff').add(user.name + " deleted the report by " + Reports[id].reporter + ". (ID: " + id + ")").update();
-				delete Reports[idNumber];
+				delete Reports[id];
 				saveReports();
 				this.sendReply("That report has been deleted.");
 				break;

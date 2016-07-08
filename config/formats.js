@@ -12,6 +12,7 @@ exports.Formats = [
 		desc: ["Like OU, but no pokemon are revealed."],
 		section: "Server Exclusive",
 		
+		team: 'OU',
 		ruleset: ['Pokemon', 'Standard', 'Swagger Clause', 'Baton Pass Clause'],
 		banlist: ['Soul Dew', 'LC', 'Uber', 'Shadow Tag'],
 	},

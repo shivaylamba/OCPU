@@ -71,4 +71,21 @@ exports.commands = {
 	battletestversion: function (target, room, user) {
 		this.popupReply("All commands are in the Alpha stage. None are completed.");
 	},
+	
+	bte4: 'battletestelite4',
+	battletestelite4: function (target, room, user) {
+		target = this.splitTarget(target, true);
+		let targetUser = this.targetUser;
+		let name = this.targetUsername;
+		let userid = toId(name);
+		
+		if (!this.can('roomvoice')) return this.errorReply('You do not have access to this command.');
+		if (!this.canTalk()) return this.errorReply('You cannot do this while you are unable to talk!');
+		
+		this.add(name + " has obtained E4 status! Mods, please set " + name + " to whatever rank E4 is in this room.");
+		
+		if (targetUser) {
+			targetUser.popup("You have gotted E4 status in " + room.id "!");
+		}
+	},
 };

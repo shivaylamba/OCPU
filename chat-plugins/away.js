@@ -20,11 +20,11 @@ let asciiMap = new Map([
 
 function parseStatus(text, encoding) {
 	if (encoding) {
-		text = text.split('').map(function (char) {
+		text = text.split('').map(char => {
 			return bubbleLetterMap.get(char);
 		}).join('');
 	} else {
-		text = text.split('').map(function (char) {
+		text = text.split('').map(char => {
 			return asciiMap.get(char);
 		}).join('');
 	}
@@ -33,6 +33,7 @@ function parseStatus(text, encoding) {
 
 exports.commands = {
 	away: function (target, room, user) {
+		if (!this.can('lock')) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
 		if (!user.isAway && user.name.length > 15) return this.sendReply("Your username is too long for any kind of use of this command.");
 
@@ -58,17 +59,15 @@ exports.commands = {
 			targetUser.send("|nametaken||Your name conflicts with " + user.name + (user.name.substr(-1) === "s" ? "'" : "'s") + " new away status.");
 		}
 
-		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is now away for " + target.toLowerCase() + ".");
+		this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is now away for " + target.toLowerCase() + ".");
 		user.forceRename(newName, user.registered);
 		user.updateIdentity();
 		user.isAway = true;
-		
-		if (user.rank === "@" || user.rank === "&" || user.rank === "~") {
-			this.parse('/hide')
-		}
+		return this.parse('/hide');
 	},
 
 	back: function (target, room, user) {
+		if (!this.can('lock')) return false;
 		if (!user.isAway) return this.sendReply("You are not set as away.");
 		user.isAway = false;
 
@@ -76,7 +75,7 @@ exports.commands = {
 		let statusIdx = newName.search(/\s\-\s[\u24B6-\u24E9\u2460-\u2468\u24EA]+$/);
 		if (statusIdx < 0) {
 			user.isAway = false;
-			if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is no longer away.");
+			this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is no longer away.");
 			return false;
 		}
 
@@ -85,10 +84,8 @@ exports.commands = {
 		user.forceRename(newName, user.registered);
 		user.updateIdentity();
 		user.isAway = false;
-		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(newName) + "</strong></font> is no longer away for " + status.toLowerCase() + ".");
-		if (user.rank === "@" || user.rank === "&" || user.rank === "~") {
-			this.parse('/show')
-		}
+		this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(newName) + "</strong></font> is no longer away for " + status.toLowerCase() + ".");
+		return this.parse('/show');
 	},
 
 	afk: function (target, room, user) {

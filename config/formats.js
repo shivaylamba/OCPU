@@ -104,9 +104,32 @@ exports.Formats = [
 
 		ruleset: ['RU'],
 		banlist: ['RU', 'BL3'],
-	},
+		onValidateSet: function (set, format, setHas) {
+			if (!('batonpass' in setHas)) return;
+			let speedBoosted = false;
+			for (let i = 0; i < set.moves.length; i++) {
+				let move = this.getMove(set.moves[i]);
+				if (move.boosts && move.boosts.spe > 0) {
+					speedBoosted = true;
+					break;
+				}
+			}
+			let boostSpeed = ['flamecharge', 'geomancy', 'motordrive', 'rattled', 'speedboost', 'steadfast', 'weakarmor', 'salacberry'];
+			if (!speedBoosted) {
+				for (let i = 0; i < boostSpeed.length; i++) {
+					if (boostSpeed[i] in setHas) {
+						speedBoosted = true;
+						break;
+					}
+				}
+			}
+			if (speedBoosted) {
+				return [(set.name || set.species) + " can Baton Pass Speed boosts, which is banned by NU."];
+			}
+		},
+        },
 	{
-		name: "PU",
+		name: "PU (Suspect Test)",
 		desc: [
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3560703/\">np: PU Stage 6</a>",
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3528743/\">PU Viability Ranking</a>",

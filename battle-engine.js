@@ -3585,6 +3585,10 @@ Battle = (() => {
 					break;
 				}
 				this.runEvent('AfterEachBoost', target, source, effect, currentBoost);
+			} else if (effect.effectType === 'Ability') {
+			if (isSecondary) this.add(msg, target, i, boostBy);
+			} else if (!isSecondary && !isSelf) {
+			this.add(msg, target, i, boostBy);
 			}
 		}
 		this.runEvent('AfterBoost', target, source, effect, boost);

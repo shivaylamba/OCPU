@@ -311,6 +311,7 @@ exports.grouplist = [
 		gamemanagement: true,
 		bypassblocks: 'u%@&',
 		customavatar: true,
+		pban: true,
 		trainercard: true,
 	},
 	{

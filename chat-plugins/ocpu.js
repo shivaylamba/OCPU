@@ -866,8 +866,9 @@ exports.commands = {
 		}
 		return this.sendReplyBox('<center><font size="3"><b>Coin Game!</b></font><br>' + results + '');
 	},
+	errorlogs: 'crashlogs',
 	crashlogs: function (target, room, user) {
-		if (!this.can('pban')) return false;
+		if (!this.can('forcewin')) return false;
 		let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
 		user.send('|popup|' + crashes);
 	},

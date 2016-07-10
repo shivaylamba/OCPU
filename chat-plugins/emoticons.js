@@ -11,6 +11,31 @@ try {
 	console.error(e);
 }
 
+exports.parseEmoticons = parseEmoticons;
+
+// for travis build
+if (typeof demFeels.extendEmotes === 'function') {
+	// example extending emotes
+	demFeels.extendEmotes({
+		'(ditto)': 'https://cdn.betterttv.net/emote/554da1a289d53f2d12781907/2x',
+		'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
+		'feelsbn': 'http://i.imgur.com/wp51rIg.png',
+	});
+}
+
+const emotes = demFeels.getEmotes();
+
+const emotesKeys = Object.keys(emotes).sort();
+
+/**
+* Parse emoticons in message.
+*
+* @param {String} message
+* @param {Object} room
+* @param {Object} user
+* @param {Boolean} pm - returns a string if it is in private messages
+* @returns {Boolean|String}
+*/
 function parseEmoticons(message, room, user, pm) {
 	if (typeof message !== 'string' || (!pm && room.disableEmoticons)) return false;
 
@@ -40,43 +65,16 @@ function parseEmoticons(message, room, user, pm) {
 
 	let group = user.getIdentity().charAt(0);
 	if (room.auth) group = room.auth[user.userid] || group;
+	if (pm && !user.hiding) group = user.group;
+
+	if (pm) return "<div class='chat' style='display:inline'>" + "<em class='mine'>" + message + "</em></div>";
 
 	let style = "background:none;border:0;padding:0 5px 0 0;font-family:Verdana,Helvetica,Arial,sans-serif;font-size:9pt;cursor:pointer";
-
 	message = "<div class='chat'>" + "<small>" + group + "</small>" + "<button name='parseCommand' value='/user " + user.name + "' style='" + style + "'>" + "<b><font color='" + color(user.userid) + "'>" + user.name + ":</font></b>" + "</button><em class='mine'>" + message + "</em></div>";
-	if (pm) return message;
 
 	room.addRaw(message);
-
 	return true;
 }
-
-
-exports.parseEmoticons = parseEmoticons;
-
-// for travis build
-if (typeof demFeels.extendEmotes === 'function') {
-	// example extending emotes
-	demFeels.extendEmotes({
-		'(ditto)': 'https://cdn.betterttv.net/emote/554da1a289d53f2d12781907/2x',
-		'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
-		'feelsbn': 'http://i.imgur.com/wp51rIg.png',
-	});
-}
-
-const emotes = demFeels.getEmotes();
-
-const emotesKeys = Object.keys(emotes).sort();
-
-/**
-* Parse emoticons in message.
-*
-* @param {String} message
-* @param {Object} room
-* @param {Object} user
-* @param {Boolean} pm - returns a string if it is in private messages
-* @returns {Boolean|String}
-*/
 
 /**
 * Create a two column table listing emoticons.

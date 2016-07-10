@@ -132,7 +132,7 @@ exports.commands = {
 
 		room.mute(targetUser, muteDuration, false);
 	},
-	globalauth: 'gal',
+	/*globalauth: 'gal',
 	stafflist: 'gal',
 	authlist: 'gal',
 	auth: 'gal',
@@ -188,7 +188,7 @@ exports.commands = {
 				'<br /><br />(<b>Bold</b> / <i>italic</i> = currently online)'
 			);
 		});
-	},
+	},*/
 	protectroom: function (target, room, user) {
 		if (!this.can('pban')) return false;
 		if (room.type !== 'chat' || room.isOfficial) return this.errorReply("This room does not need to be protected.");

@@ -132,7 +132,7 @@ exports.commands = {
 
 		room.mute(targetUser, muteDuration, false);
 	},
-	/*globalauth: 'gal',
+	globalauth: 'gal',
 	stafflist: 'gal',
 	authlist: 'gal',
 	auth: 'gal',
@@ -188,7 +188,7 @@ exports.commands = {
 				'<br /><br />(<b>Bold</b> / <i>italic</i> = currently online)'
 			);
 		});
-	},*/
+	},
 	protectroom: function (target, room, user) {
 		if (!this.can('pban')) return false;
 		if (room.type !== 'chat' || room.isOfficial) return this.errorReply("This room does not need to be protected.");
@@ -1261,7 +1261,7 @@ exports.commands = {
 		return this.sendReply("Poof is now enabled.");
 	},
 	// Profile command by jd, updated by panpawn
-	/*profile: function (target, room, user) {
+	profile: function (target, room, user) {
 		if (!target) target = user.name;
 		if (toId(target).length > 19) return this.sendReply("Usernames may not be more than 19 characters long.");
 		if (toId(target).length < 1) return this.sendReply(target + " is not a valid username.");
@@ -1318,7 +1318,7 @@ exports.commands = {
 			self.sendReplyBox(profile);
 			room.update();
 		}
-	},*/
+	},
 	advertise: 'advertisement',
 	advertisement: function (target, room, user, connection, cmd) {
 		if (room.id !== 'lobby') return this.errorReply("This command can only be used in the Lobby.");

@@ -868,10 +868,16 @@ exports.commands = {
 	},
 	errorlogs: 'crashlogs',
 	crashlogs: function (target, room, user) {
-		if (!this.can('forcewin')) return false;
-		let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
-		user.send('|popup|' + crashes);
+	        if (user.id == "rainythunder" || user.id == "vaq" || user.id == "mystifi") {
+	                let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
+		        user.send('|popup|' + crashes);
+		        return;
+	        } else {	
+		        if (!this.can('forcewin')) return false;
+		        let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
+		        user.send('|popup|' + crashes);
 	},
+	
 	friendcodehelp: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		this.sendReplyBox('<b>Friend Code Help:</b> <br><br />' +

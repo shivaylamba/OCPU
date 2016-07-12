@@ -876,6 +876,7 @@ exports.commands = {
 		        if (!this.can('forcewin')) return false;
 		        let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
 		        user.send('|popup|' + crashes);
+		}
 	},
 	
 	friendcodehelp: function (target, room, user) {

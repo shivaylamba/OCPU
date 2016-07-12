@@ -48,7 +48,7 @@ exports.commands = {
 		this.add(targetUser.name + " has failed the battle test. (Tested by " + user.name + ".)");
 		targetUser.popup("You have failed the battle test in " + room.title + ".");
 		return this.privateModCommand(
-			"(" + targetUser.name " has failed their battle test. (Tested by " + user.name + ".)"
+			"(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + ".)"
 		);
 	},
 	battletestfailhelp: ["/battletestfail OR /btf [user]: Declares that a person has failed a battle test."],

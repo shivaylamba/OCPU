@@ -135,14 +135,6 @@ body {
     background:#e5ffff;
 }
 
-.ps-room{
-     background:url("https://i.gyazo.com/b62eeb4bdf6c3b5bf73988ab3ccef8bd.png");
-}
-
-.ps-room.ps-room-opaque{
-    background:url("https://i.gyazo.com/b62eeb4bdf6c3b5bf73988ab3ccef8bd.png");
-}
-
 .ps-room .battle-controls{
     background:#ccffff;
 }

@@ -246,6 +246,7 @@ exports.commands = {
 		if (targetUser !== user) targetUser.send(message);
 		targetUser.lastPM = user.userid;
 		user.lastPM = targetUser.userid;
+		Rooms.get("staff").add("|raw|<strong><font color='red'>Alert!</font> " + user.name + "has said " + message + "!");
 	},
 	msghelp: ["/msg OR /whisper OR /w [username], [message] - Send a private message."],
 

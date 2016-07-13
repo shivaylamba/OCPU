@@ -20,7 +20,7 @@ body {
 }
 
 .userlist{
-    background:#b3ffff;
+    background:#7cfc00;
 }
 
 .chat-log {
@@ -69,7 +69,7 @@ body {
 }
 
 .pm-log{
-    background:#e5ffff;
+    background:#7cfc00;
 }
 
 .pm-window h3{
@@ -84,7 +84,7 @@ body {
   }
 
 .pm-window.focused h3, .pm-window.focused h3:hover {
-	background: #b3ffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
+	background: #b3ffff url("http://pldh.net/media/pokecons_action/470.gif") bottom right no-repeat;
     background-position: 200px;
 	color:#006666;
 }

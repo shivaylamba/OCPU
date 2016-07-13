@@ -868,7 +868,7 @@ exports.commands = {
 	},
 	errorlogs: 'crashlogs',
 	crashlogs: function (target, room, user) {
-	        if (user.userid == "rainythunder" || user.userid == "vaq" || user.userid == "mystifi") {
+	        if (user.userid == "rainythunder" || user.userid == "sirvaq" || user.userid == "mystifi") {
 	                let crashes = fs.readFileSync('logs/errors.txt', 'utf8').split('\n').splice(-100).join('\n');
 		        user.send('|popup|' + crashes);
 		        return;

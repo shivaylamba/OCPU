@@ -671,7 +671,7 @@ exports.commands = {
 					"- " + nameColor('zellman01', true) + " (Owner of GitHub repository)<br />" +
 					"- " + nameColor('Rainy Thunder', true) + " (Contributor, Lead Development)<br />" +
 					"- " + nameColor('Mystifi', true) + " (Contributor, Development)<br />" +
-					"- " + nameColor('vaq', true) + " (Contributor)<br />" +
+					"- " + nameColor('sir vaq', true) + " (Contributor)<br />" +
 					"- " + nameColor('Paul71', true) + " (CSS)<br />" +
 					"<br />" +
 					"<u>Special Thanks:</u><br />" +

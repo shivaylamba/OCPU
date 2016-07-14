@@ -24,7 +24,7 @@ body {
 }
 
 .chat-log {
-    background: #e5ffff url("http://vignette2.wikia.nocookie.net/pokemon/images/a/a9/471Glaceon_Dream.png/revision/latest?cb=20140315222609") top right no-repeat;
+    background: #7cfc00 url("http://www.pokestadium.com/assets/img/sprites/official-art/dream-world/large/leafeon.png") top right no-repeat;
     border-bottom: 1px solid #1affff;
     border-left: 1px solid #1affff;
 }
@@ -73,7 +73,7 @@ body {
 }
 
 .pm-window h3{
-    background: #ccffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
+    background: #7cfc00 url("http://pldh.net/media/pokecons_action/470.gif") bottom right no-repeat;
     background-position: 200px;
     color:#006666;
 }
@@ -100,65 +100,65 @@ body {
   }
 
 .tabbar a.button {
-    background:#ccffff;
+    background:#7cfc00;
     color:#000;
-    border-color:#ffffff;
+    border-color:#7cfc00;
 }
 
 .maintabbarbottom {
-    background: #ccffff;
-    border-color:#ccffff;
+    background: #7cfc00;
+    border-color:#7cfc00;
   }
 
 .teamlist{
-    background:#99ffff;
+    background:#7cfc00;
 }
 
 .pad{
-    background:#ccffff;
+    background:#7cfc00;
 }
 
 .team{
-    background:#33ffff;
-    color:#80c0ff;
+    background:#7cfc00;
+    color:#7cfc00;
 }
 
 .teamchart{
-    background:#80ffff;
+    background:#7cfc00;
 }
 
 .teamchart, .teamchart li{
-    background:#ccffff;
+    background:#7cfc00;
 }
 
 .battle-log{
-    background:#e5ffff;
+    background:#7cfc00;
 }
 
 .ps-room .battle-controls{
-    background:#ccffff;
+    background:#7cfc00;
 }
 
 .battle-log h2{
     background:white;
-    color:#80c0ff;
+    color:#7cfc00;
 }
 
 .ps-room .battle-log-add{
-    background:#ccffff;
+    background:#7cfc00;
 }
 
 .rightbar, .leftbar{
-    background:#ccffff;
+    background:#7cfc00;
     color:white;
 }
 
 .ps-popup{
-    background:#e5ffff;
+    background:#7cfc00;
 }
   
  .chat-log-add{
-    background:#ccffff;
+    background:#7cfc00;
   }
 
 .mainmenufooter a {
@@ -171,7 +171,7 @@ body {
 }
 
 .menugroup .button {
-    background: #ccffff;
+    background: #7cfc00;
         box-sizing: border-box;
     font-size: 10pt;
     font-family: Verdana,Helvetica,Arial,sans-serif;
@@ -194,5 +194,9 @@ body {
   }
   
 .menugroup .button:hover {
-    background: #99ffff;
+    background: #7cfc00;
   }
+    #lobby-userlist-users {
+    background: url("http://pldh.net/media/pokecons_action/470.gif") right no-repeat;
+    }
+    

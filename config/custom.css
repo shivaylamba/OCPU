@@ -11,7 +11,7 @@ body {
   }
 
 .header{
-    background:#b3ffff url("http://i.imgur.com/fjXTRcl.png") no-repeat;
+    background:#7cfc00 url("http://i.imgur.com/fjXTRcl.png") no-repeat;
 }
 
 .nightclub {
@@ -94,8 +94,8 @@ body {
 }
 
 .tabbar a.button.cur, .tabbar a.button.cur:hover {
-    background: #ccffff;
-      border-color:#ffffff;
+    background: #7cfc00;
+      border-color:#7cfc00;
     color: #000;
   }
 

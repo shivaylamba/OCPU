@@ -33,7 +33,7 @@ function parseStatus(text, encoding) {
 
 exports.commands = {
 	away: function (target, room, user) {
-		if (!this.can('lock')) return false;
+		if (!user.autoconfirmed) return this.errorReply("You must be autoconfirmed to use this command.");
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
 		if (!user.isAway && user.name.length > 15) return this.sendReply("Your username is too long for any kind of use of this command.");
 
@@ -59,7 +59,9 @@ exports.commands = {
 			targetUser.send("|nametaken||Your name conflicts with " + user.name + (user.name.substr(-1) === "s" ? "'" : "'s") + " new away status.");
 		}
 
-		this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is now away for " + target.toLowerCase() + ".");
+		if (user.isStaff) {
+			this.add("|raw|-- <font color='" + nameColor(user.userid) + "'><strong>" + Tools.escapeHTML(user.name) + "</strong></font> is now away for " + target.toLowerCase() + ".");
+		}
 		user.forceRename(newName, user.registered);
 		user.updateIdentity();
 		user.isAway = true;
@@ -67,7 +69,7 @@ exports.commands = {
 	},
 
 	back: function (target, room, user) {
-		if (!this.can('lock')) return false;
+		if (!user.autoconfirmed) return this.errorReply("You must be autoconfirmed to use this command.");
 		if (!user.isAway) return this.sendReply("You are not set as away.");
 		user.isAway = false;
 
@@ -84,7 +86,9 @@ exports.commands = {
 		user.forceRename(newName, user.registered);
 		user.updateIdentity();
 		user.isAway = false;
-		this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Tools.escapeHTML(newName) + "</strong></font> is no longer away for " + status.toLowerCase() + ".");
+		if (user.isStaff) {
+			this.add("|raw|-- <font color='" + nameColor(user.userid) + "'><strong>" + Tools.escapeHTML(newName) + "</strong></font> is no longer away for " + status.toLowerCase() + ".");
+		}
 		return this.parse('/show');
 	},
 

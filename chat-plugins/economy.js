@@ -130,11 +130,10 @@ function handleBoughtItem(item, user, cost) {
 		this.sendReply("However, this will go away if you are Day Muted in the Lobby that isn't a test, or being locked.")
 	} else {
 		let msg = '**' + user.name + " has bought " + item + ".**";
-		Rooms.rooms.staff.add('|c|~Shop Alert|' + msg);
-		Rooms.rooms.staff.update();
-		Users.users.forEach(function (user) {
-			if (user.group === '~' || user.group === '&' || user.group === '@') {
-				user.send('|pm|~Shop Alert|' + user.getIdentity() + '|' + msg);
+		Rooms('staff').add('|c|~Shop Alert|' + msg).update();
+		Users.users.forEach(curUser => {
+			if (curUser.can('ban')) {
+				curUser.send('|pm|~Shop Alert|' + curUser.getIdentity() + '|' + msg);
 			}
 		});
 	}
@@ -288,12 +287,13 @@ exports.commands = {
 		}
 		let topMsg = "Displaying the last " + numLines + " lines of transactions:\n";
 		let file = path.join(__dirname, '../logs/money.txt');
-		fs.exists(file, function (exists) {
+		fs.exists(file, exists => { // check if transactions exist
 			if (!exists) return connection.popup("No transactions.");
-			fs.readFile(file, 'utf8', function (err, data) {
+			fs.readFile(file, 'utf8', (err, data) => {
+				if (err) return this.errorReply("ERROR: " + err); // check for errors
 				data = data.split('\n');
 				if (target && matching) {
-					data = data.filter(function (line) {
+					data = data.filter(line => {
 						return line.toLowerCase().indexOf(target.toLowerCase()) >= 0;
 					});
 				}
@@ -308,14 +308,14 @@ exports.commands = {
 	richestuser: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		let display = '<center><u><b>Richest Users</b></u></center><br><table border="1" cellspacing="0" cellpadding="5" width="100%"><tbody><tr><th>Rank</th><th>Username</th><th>Money</th></tr>';
-		let keys = Object.keys(Db('money').object()).map(function (name) {
+		let keys = Object.keys(Db('money').object()).map(name => {
 			return {name: name, money: Db('money').get(name)};
 		});
 		if (!keys.length) return this.sendReplyBox("Money ladder is empty.");
-		keys.sort(function (a, b) {
+		keys.sort((a, b) => {
 			return b.money - a.money;
 		});
-		keys.slice(0, 10).forEach(function (user, index) {
+		keys.slice(0, 10).forEach((user, index) => {
 			display += "<tr><td>" + (index + 1) + "</td><td>" + user.name + "</td><td>" + user.money + "</td></tr>";
 		});
 		display += "</tbody></table>";
@@ -387,7 +387,7 @@ exports.commands = {
 	economystats: function (target, room, user) {
 		if (!this.runBroadcast()) return;
 		const users = Object.keys(Db('money').object());
-		const total = users.reduce(function (acc, cur) {
+		const total = users.reduce((acc, cur) => {
 			return acc + Db('money').get(cur);
 		}, 0);
 		let average = Math.floor(total / users.length) || '0';
@@ -395,5 +395,4 @@ exports.commands = {
 		output += "The average user has " + average + currencyName(average) + ".";
 		this.sendReplyBox(output);
 	},
-
 };

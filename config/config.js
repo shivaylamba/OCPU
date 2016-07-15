@@ -86,7 +86,7 @@ exports.reportjoinsperiod = 0;
 // report battles - shows messages like "OU battle started" in the lobby
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 160 or so users.
-exports.reportbattles = false;
+exports.reportbattles = true;
 
 // report joins and leaves in battle - shows messages like "<USERNAME> joined" in battle
 //   Set this to false on large tournament servers where battles get a lot of joins and leaves.
@@ -106,12 +106,12 @@ exports.chatmodchat = 'autoconfirmed';
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
 exports.battlemodchat = false;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
-exports.pmmodchat = false;
+exports.pmmodchat = '%';
 
 // forced timer - force the timer on for all battles
 //   Players will be unable to turn it off.
 //   This setting can also be turned on with the command /forcetimer.
-exports.forcetimer = false;
+exports.forcetimer = true;
 
 // backdoor - allows Pokemon Showdown system operators to provide technical
 //            support for your server

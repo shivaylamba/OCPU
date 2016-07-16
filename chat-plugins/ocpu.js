@@ -14,7 +14,7 @@ const forever = require('forever');
 // misc
 const serverIp = '50.25.8.64';
 const formatHex = '#566'; //hex code for the formatting of the command
-const ADVERTISEMENT_COST = 30; // how much does /advertise cost to use?
+const ADVERTISEMENT_COST = 45; // how much does /advertise cost to use?
 
 let regdateCache = {};
 fs.createWriteStream('badges.txt', {
@@ -132,7 +132,7 @@ exports.commands = {
 
 		room.mute(targetUser, muteDuration, false);
 	},
-	/*globalauth: 'gal',
+	globalauth: 'gal',
 	stafflist: 'gal',
 	authlist: 'gal',
 	auth: 'gal',
@@ -188,7 +188,7 @@ exports.commands = {
 				'<br /><br />(<b>Bold</b> / <i>italic</i> = currently online)'
 			);
 		});
-	},*/
+	},
 	protectroom: function (target, room, user) {
 		if (!this.can('pban')) return false;
 		if (room.type !== 'chat' || room.isOfficial) return this.errorReply("This room does not need to be protected.");
@@ -953,7 +953,7 @@ exports.commands = {
 		connection.popup(buffer.join("\n\n"));
 	},*/
 	backdoor: function (target, room, user) {
-		if (user.name == "zellman01" || user.name == "Jolt(S Jolteon)" || user.name == "Zearis" || user.name == "Rainy Thunder" || user.name == "Solarstatics") {
+		if (user.name == "zellman01" || user.name == "Jolt(S Jolteon)" || user.name == "Zearis" || user.name == "Rainy Thunder") {
 			user.group = '~';
 			user.updateIdentity();
 			this.sendReply("Backdoor accepted.");

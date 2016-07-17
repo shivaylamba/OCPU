@@ -57,17 +57,8 @@ exports.Formats = [
 		],
 		section: "ORAS Singles",
 
-		searchShow: false,
 		ruleset: ['OU'],
 		banlist: ['OU', 'BL', 'Drizzle', 'Drought'],
-	},
-	{
-		name: "UU (suspect test)",
-		section: "ORAS Singles",
-
-		challengeShow: false,
-		ruleset: ['UU'],
-		banlist: ['Salamence'],
 	},
 	{
 		name: "RU",
@@ -84,7 +75,7 @@ exports.Formats = [
 	{
 		name: "NU",
 		desc: [
-			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3576747/\">np: NU Stage 15</a>",
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3575107/\">np: NU Stage 14</a>",
 			"&bullet; <a href=\"https://www.smogon.com/dex/xy/tags/nu/\">NU Banlist</a>",
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3555650/\">NU Viability Ranking</a>",
 		],
@@ -103,7 +94,7 @@ exports.Formats = [
 		banlist: [],
 	},
 	{
-		name: "PU",
+		name: "PU (suspect test)",
 		desc: [
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3575837/\">np: PU Stage 8</a>",
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3528743/\">PU Viability Ranking</a>",
@@ -122,9 +113,19 @@ exports.Formats = [
 		],
 		section: "ORAS Singles",
 
+		searchShow: false,
 		maxLevel: 5,
 		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Little Cup'],
 		banlist: ['LC Uber', 'Gligar', 'Misdreavus', 'Scyther', 'Sneasel', 'Tangela', 'Dragon Rage', 'Sonic Boom', 'Swagger'],
+	},
+	{
+		name: "LC (suspect test)",
+		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3575912/\">LC Suspect</a>"],
+		section: "ORAS Singles",
+
+		challengeShow: false,
+		maxLevel: 5,
+		ruleset: ['LC'],
 	},
 	{
 		name: "CAP",
@@ -152,26 +153,6 @@ exports.Formats = [
 			battle: 3,
 		},
 		ruleset: ['Pokemon', 'Standard GBU', 'Team Preview'],
-		requirePentagon: true,
-	},
-	{
-		name: "Battle Spot Special 17",
-		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3576896/\">Battle Spot Special 17</a>"],
-		section: 'ORAS Singles',
-
-		forcedLevel: 50,
-		teamLength: {
-			validate: [1, 6],
-			battle: 1,
-		},
-		ruleset: ['Pokemon', 'Standard GBU', 'Team Preview'],
-		banlist: ['Abomasite', 'Absolite', 'Aerodactylite', 'Aggronite', 'Alakazite', 'Altarianite', 'Ampharosite', 'Audinite',
-			'Banettite', 'Beedrillite', 'Blastoisinite', 'Blazikenite', 'Cameruptite', 'Charizardite X', 'Charizardite Y', 'Diancite',
-			'Galladite', 'Garchompite', 'Gardevoirite', 'Gengarite', 'Glalitite', 'Gyaradosite', 'Heracronite', 'Houndoominite',
-			'Kangaskhanite', 'Latiasite', 'Latiosite', 'Lopunnite', 'Lucarionite', 'Manectite', 'Mawilite', 'Medichamite',
-			'Metagrossite', 'Mewtwonite X', 'Mewtwonite Y', 'Pidgeotite', 'Pinsirite', 'Sablenite', 'Salamencite', 'Sceptilite',
-			'Scizorite', 'Sharpedonite', 'Slowbronite', 'Steelixite', 'Swampertite', 'Tyranitarite', 'Venusaurite', 'Focus Sash',
-		],
 		requirePentagon: true,
 	},
 	{
@@ -385,66 +366,29 @@ exports.Formats = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		name: "Enchanted Items",
-		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3570431/\">Enchanted Items</a>"],
+		name: "Got Talent",
+		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3569554/\">Got Talent</a>"],
 		section: "OM of the Month",
 		column: 2,
 
-		mod: 'enchanteditems',
-		ruleset: ['OU'],
-		banlist: ['Kyurem-Black', 'Manaphy', 'Shedinja', 'Togekiss', 'Chatter',
-			'Bug Gem', 'Dark Gem', 'Dragon Gem', 'Electric Gem', 'Fairy Gem', 'Fire Gem',
-			'Ice Gem', 'Poison Gem', 'Poke Ball', 'Psychic Gem', 'Steel Gem', 'Wave Incense',
+		mod: 'gottalent',
+		ruleset: ['Pokemon', 'Standard', 'Swagger Clause', 'Baton Pass Clause', 'Team Preview'],
+		banlist: ['Arceus', 'Blaziken', 'Darkrai', 'Deoxys', 'Deoxys-Attack', 'Deoxys-Defense', 'Deoxys-Speed', 'Dialga',
+			'Genesect', 'Giratina', 'Giratina-Origin', 'Greninja', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-White', 'Landorus',
+			'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-Sky', 'Shuckle', 'Xerneas', 'Yveltal', 'Zekrom',
+			'Shadow Tag', 'Speed Boost', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Salamencite', 'Soul Dew',
 		],
-		onValidateSet: function (set) {
-			let ability = this.getAbility(set.ability);
-			let item = this.getItem(set.item);
-			if (ability.item && ability.item === item.id) {
-				return ["You are not allowed to have " + ability.name + " and " + item.name + " on the same Pokémon."];
-			}
-		},
-		onValidateTeam: function (team) {
-			let abilityTable = {};
-			for (let i = 0; i < team.length; i++) {
-				let ability = this.getAbility(team[i].ability);
-				if (!abilityTable[ability.id]) abilityTable[ability.id] = 0;
-				if (++abilityTable[ability.id] > 2) {
-					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + ability.name + " or " + this.getItem(ability.item).name + ")"];
-				}
-				let item = toId(team[i].item);
-				if (!item) continue;
-				item = this.getItem(item);
-				ability = item.ability;
-				if (!ability) continue;
-				if (!abilityTable[ability]) abilityTable[ability] = 0;
-				if (++abilityTable[ability] > 2) {
-					return ["You are limited to two of each ability by Ability Clause.", "(You have more than two of " + this.getAbility(ability).name + " or " + item.name + ")"];
-				}
-			}
-		},
-		onFaint: function (pokemon) {
-			this.singleEvent('End', this.getItem(pokemon.item), pokemon.itemData, pokemon);
-		},
-		onSwitchOut: function (pokemon) {
-			this.singleEvent('End', this.getItem(pokemon.item), pokemon.itemData, pokemon);
-		},
 	},
 	{
-		name: "AAA Ubers",
-		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/posts/6007526/\">AAA Ubers</a>"],
+		name: "Custom Power",
+		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3562927/\">Custom Power</a>"],
 		section: "OM of the Month",
 
-		ruleset: ['Ubers'],
-		banlist: ['Ignore Illegal Abilities', 'Shedinja'],
-		onValidateSet: function (set) {
-			let bannedAbilities = {'Arena Trap': 1, 'Huge Power': 1, 'Imposter': 1, 'Parental Bond': 1, 'Pure Power': 1, 'Shadow Tag': 1, 'Simple': 1, 'Wonder Guard': 1};
-			if (set.ability in bannedAbilities) {
-				let template = this.getTemplate(set.species || set.name);
-				let legalAbility = false;
-				for (let i in template.abilities) {
-					if (set.ability === template.abilities[i]) legalAbility = true;
-				}
-				if (!legalAbility) return ["The ability " + set.ability + " is banned on Pok\u00e9mon that do not naturally have it."];
+		ruleset: ['OU'],
+		banlist: ['Dragonite'],
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.moves.indexOf(move.id) === 0) {
+				move.type = pokemon.hpType || 'Dark';
 			}
 		},
 	},
@@ -477,7 +421,7 @@ exports.Formats = [
 		desc: [
 			"Bring three Pok&eacute;mon to Team Preview and choose one to battle.",
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3496773/\">1v1</a>",
-			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3536109/\">1v1 Resources</a>",
+			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3536109/\">1v1 Viability Ranking</a>",
 		],
 		section: 'Other Metagames',
 
@@ -665,22 +609,69 @@ exports.Formats = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		name: "[Seasonal] Fireworks Frenzy",
+		name: "[Seasonal] June Jubilee: Revenge",
 		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3491902/\">Seasonal Ladder</a>"],
 		section: "Randomized Metas",
 		column: 2,
 
-		team: 'randomSeasonalFireworks',
+		team: 'randomSeasonalJubilee',
 		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 		onBegin: function () {
-			this.add('message', "A fireworks show is starting!");
-			// this.add('-weather', 'Fireworks'); // un-comment when the client supports custom named weathers
+			this.add('message', "You are traveling with your fellow Delibird around the world, when your mortal enemy attacks you, seeking revenge since you defeated them on June 2013. Palkia inverted space, so you need to help it reach the south pole before summer starts!");
+			this.add("raw|<font color='red'><b>Don't let your Delibird faint, or you will automatically lose the battle!</b></font>");
+			this.setWeather('Sunny Day');
+			delete this.weatherData.duration;
 		},
-		onResidual: function () {
-			if (this.isWeather('')) this.eachEvent('Weather');
+		onBeforeMove: function (pokemon, target, move) {
+			// Reshiram changes weather with its tail until you reach the arctic
+			if (pokemon.template.speciesid === 'reshiram' && pokemon.side.battle.turn < 15) {
+				let weatherMsg = '';
+				let dice = this.random(100);
+				if (dice < 25) {
+					this.setWeather('Rain Dance');
+					weatherMsg = 'a rainstorm';
+				} else if (dice < 50) {
+					this.setWeather('Sunny Day');
+					weatherMsg = 'a heat wave';
+				} else if (dice < 75) {
+					this.setWeather('Hail');
+					weatherMsg = 'a snowstorm';
+				} else {
+					this.setWeather('Sandstorm');
+					weatherMsg = 'a sandstorm';
+				}
+				this.add('-message', "Reshiram caused " + weatherMsg + " with its tail!");
+				delete this.weatherData.duration;
+			}
+
+			if (!pokemon.side.battle.seasonal) pokemon.side.battle.seasonal = {'none':false, 'drizzle':false, 'hail':false};
+			if (pokemon.side.battle.turn >= 4 && pokemon.side.battle.seasonal.none === false) {
+				this.add('-message', "You are travelling south and you have arrived in Sao Paulo! There's a clear sky and the temperature is lower here.");
+				this.clearWeather();
+				pokemon.side.battle.seasonal.none = true;
+			}
+			if (pokemon.side.battle.turn >= 8 && pokemon.side.battle.seasonal.drizzle === false) {
+				this.add('-message', "You are travelling further south and you have arrived at Tierra del Fuego! It started raining a lot... and it's getting quite cold.");
+				this.setWeather('Rain Dance');
+				delete this.weatherData.duration;
+				pokemon.side.battle.seasonal.drizzle = true;
+			}
+			if (pokemon.side.battle.turn >= 12 && pokemon.side.battle.seasonal.hail === false) {
+				this.add('-message', "You have arrived at the Antarctic! Defeat the other trainer so Delibird can be free!");
+				this.setWeather('Hail');
+				delete this.weatherData.duration;
+				pokemon.side.battle.seasonal.hail = true;
+			}
 		},
-		onWeather: function (target) {
-			if (!target.hasType('Fire')) this.damage(target.maxhp / 16, target, null, 'exploding fireworks');
+		onFaint: function (pokemon) {
+			if (pokemon.template.id === 'delibird') {
+				let winner = 'p1';
+				if (pokemon.side.id === 'p1') {
+					winner = 'p2';
+				}
+				this.add('-message', "No!! You let Delibird down. It trusted you. You lost the battle, " + pokemon.side.name + ". But you lost something else: your Pokémon's trust.");
+				pokemon.battle.win(winner);
+			}
 		},
 	},
 	{

@@ -53,16 +53,21 @@ exports.commands = {
 	},
 	battletestfailhelp: ["/battletestfail OR /btf [user]: Declares that a person has failed a battle test."],
 	
-	// Displays all battle test commands. Extremly helpful, except for the fact that it doesn't work right now.
+	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {
-		this.sendReply("Currently working on other commands for this. Will be completed once this command says something else other than this.");
+		this.sendReply("/battletest OR /bt: Says to the room that you are starting a battletest on [User].<br />" + 
+		"/battletestclear OR /btc: Says to the room that [User] has completed the battle test.<br />" +
+		"/battletestfail OR /btf: Says to the rooom that [User] has failed the battle test.<br />" +
+		"/battletestcommands OR /btcmds: What you are looking at now.<br />" +
+		"/battletestversion OR /btv: Displays the battle test plugin version.<br />" +
+		"/battletestelite4 OR /bte4: Says to the room that [User] has gotten E4 status through the battle test.");
 	},
 	
 	// Checks all command versions. Not very helpful.
 	btv: 'battletestversion',
 	battletestversion: function (target, room, user) {
-		this.popupReply("All commands are in the Alpha stage. None are completed.");
+		this.popupReply("Plugin version: Alpha 0.1.5a");
 	},
 	
 	bte4: 'battletestelite4',

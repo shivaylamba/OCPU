@@ -170,7 +170,7 @@ exports.tellsexpiryage = 1000 * 60 * 60 * 24 * 7;
 // and above. Set to ' ' to allow all users to use offline messaging and `false` to disable
 // offline messaging completely. Set to `'autoconfirmed'` to allow only autoconfirmed users
 // to send offline messages.
-exports.tellrank = '+';
+exports.tellrank = '%';
 
 // Custom avatars.
 // This allows you to specify custom avatar images for users on your server.
@@ -308,7 +308,6 @@ exports.grouplist = [
 		modchatall: true,
 		rangeban: true,
 		editroom: true,
-		disableladder: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
 		bypassblocks: 'u%@&',

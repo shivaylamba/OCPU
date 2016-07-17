@@ -675,7 +675,9 @@ exports.commands = {
 					"<br />" +
 					"<u>Special Thanks:</u><br />" +
 					"- Current staff team<br />" +
-					"- Our regular users<br />";
+					"- Our regular users<br />" +
+					"- <u>Retired</u><br />" +
+					"- " + nameColor('Solarstatics', true) + " (Former Administrator)<br />";
 		user.popup(popup);
 	},
 	/*regdate: function (target, room, user, connection) {

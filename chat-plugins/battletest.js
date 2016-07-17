@@ -87,4 +87,22 @@ exports.commands = {
 		);
 	},
 	battletestelite4help: ["/battletestelite4 OR /bte4 [user]: Declares that a user passed their battle test and gained E4 status."],
+	
+	btgl: 'battletestgymleader',
+	battletestgymleader: function (target, room, user) {
+		if (!this.can('declare', null, room)) return false;
+		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
+		if (!target) return this.parse('/help battletestgymleader');
+		let targetUser = Users(target);
+		if (!targetUser) return this.errorReply("User '" + targetUser + "' not found. (Check your spelling?)");
+		if (!room.users[targetUser.userid]) {
+			return this.errorReply(targetUser + " is not in this room. Please make sure they join.");
+		}
+		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ".)")
+		targetUser.popup("You passed your battle test and gained GL status. Congratulations!");
+		return this.privateModCommand(
+			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ".";
+		);
+	}
+	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."]
 };

@@ -676,8 +676,8 @@ exports.commands = {
 					"<u>Special Thanks:</u><br />" +
 					"- Current staff team<br />" +
 					"- Our regular users<br />" +
-					"<br /" +
-					"<u>Retired Staff</u><br />" +
+					"<br />" +
+					"<u>Retired Staff:</u><br />" +
 					"- " + nameColor('Solarstatics', true) + " (Former Administrator)<br />";
 		user.popup(popup);
 	},

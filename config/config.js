@@ -358,6 +358,7 @@ exports.grouplist = [
 		id: "player",
 		name: "Player",
 		inherit: '+',
+		roomonly: true,
 		roomvoice: true,
 		joinbattle: true,
 	},

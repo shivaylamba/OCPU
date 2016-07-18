@@ -98,11 +98,12 @@ exports.commands = {
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {
-		this.sendReply("/battletest OR /bt: Says to the room that you are starting a battletest on [User]."); 
-		this.sendReply("/battletestclear OR /btc: Says to the room that [User] has completed the battle test.");
-		this.sendReply("/battletestfail OR /btf: Says to the rooom that [User] has failed the battle test.");
+		this.sendReply("/battletest [user] OR /bt [user]: Says to the room that you are starting a battletest on [user]."); 
+		this.sendReply("/battletestclear [user] OR /btc [user]: Says to the room that [user] has completed the battle test.");
+		this.sendReply("/battletestfail [user] OR /btf [user]: Says to the rooom that [user] has failed the battle test.");
 		this.sendReply("/battletestcommands OR /btcmds: What you are looking at now.");
 		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version.");
-		this.sendReply("/battletestelite4 OR /bte4: Says to the room that [User] has gotten E4 status through the battle test.");
+		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test.");
+		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test.");
 	}
 };

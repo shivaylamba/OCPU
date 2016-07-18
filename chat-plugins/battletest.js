@@ -92,7 +92,7 @@ exports.commands = {
 		return this.privateModCommand(
 			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).";
 		);
-	}
+	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
 	
 	// Displays all battle test commands. Extremly helpful
@@ -105,5 +105,5 @@ exports.commands = {
 		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version.");
 		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test.");
 		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test.");
-	}
+	},
 };

@@ -27,10 +27,10 @@ exports.commands = {
 		if (!room.users[targetUser.userid]) {
 			return this.errorReply(targetUser + " is not in this room. Please make sure they join.");
 		}
-		this.add(targetUser.name + " has passed the battle test. (Approved by " + user.name + ".)");
+		this.add(targetUser.name + " has passed the battle test. (Approved by " + user.name + ").");
 		targetUser.popup("You have passed the battle test in " + room.title + "; congratulations!");
 		return this.privateModCommand(
-			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ".)"
+			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + "))."
 		);
 	},
 	battletestclearhelp: ["/battletestclear OR /btc [user]: Declares that a person has completed a battle test."],
@@ -45,25 +45,14 @@ exports.commands = {
 		if (!room.users[targetUser.userid]) {
 			return this.errorReply(targetUser + " is not in this room. Please make sure they join.");
 		}
-		this.add(targetUser.name + " has failed the battle test. (Tested by " + user.name + ".)");
+		this.add(targetUser.name + " has failed the battle test. (Tested by " + user.name + ").");
 		targetUser.popup("You have failed the battle test in " + room.title + ".");
 		return this.privateModCommand(
-			"(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + ".)"
+			"(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + "))."
 		);
 	},
 	battletestfailhelp: ["/battletestfail OR /btf [user]: Declares that a person has failed a battle test."],
-	
-	// Displays all battle test commands. Extremly helpful
-	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
-	battletestcommands: function (target, room, user) {
-		this.sendReply("/battletest OR /bt: Says to the room that you are starting a battletest on [User]."); 
-		this.sendReply("/battletestclear OR /btc: Says to the room that [User] has completed the battle test.");
-		this.sendReply("/battletestfail OR /btf: Says to the rooom that [User] has failed the battle test.");
-		this.sendReply("/battletestcommands OR /btcmds: What you are looking at now.");
-		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version.");
-		this.sendReply("/battletestelite4 OR /bte4: Says to the room that [User] has gotten E4 status through the battle test.");
-	},
-	
+
 	// Checks all command versions. Not very helpful.
 	btv: 'battletestversion',
 	battletestversion: function (target, room, user) {
@@ -83,7 +72,7 @@ exports.commands = {
 		this.add(targetUser.name + " passed their battle test and gained E4 status! (Approved by " + user.name + ".)");
 		targetUser.popup("You passed your battle test and gained E4 status. Congratulations!");
 		return this.privateModCommand(
-			"(" + targetUser.name + " passed their battle test and gained E4 status. (Approved by " + user.name + ".)"
+			"(" + targetUser.name + " passed their battle test and gained E4 status. (Approved by " + user.name + "))."
 		);
 	},
 	battletestelite4help: ["/battletestelite4 OR /bte4 [user]: Declares that a user passed their battle test and gained E4 status."],
@@ -98,11 +87,22 @@ exports.commands = {
 		if (!room.users[targetUser.userid]) {
 			return this.errorReply(targetUser + " is not in this room. Please make sure they join.");
 		}
-		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ".)")
+		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ").")
 		targetUser.popup("You passed your battle test and gained GL status. Congratulations!");
 		return this.privateModCommand(
-			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ".";
+			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).";
 		);
 	}
-	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."]
+	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
+	
+	// Displays all battle test commands. Extremly helpful
+	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
+	battletestcommands: function (target, room, user) {
+		this.sendReply("/battletest OR /bt: Says to the room that you are starting a battletest on [User]."); 
+		this.sendReply("/battletestclear OR /btc: Says to the room that [User] has completed the battle test.");
+		this.sendReply("/battletestfail OR /btf: Says to the rooom that [User] has failed the battle test.");
+		this.sendReply("/battletestcommands OR /btcmds: What you are looking at now.");
+		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version.");
+		this.sendReply("/battletestelite4 OR /bte4: Says to the room that [User] has gotten E4 status through the battle test.");
+	}
 };

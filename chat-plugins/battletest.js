@@ -87,7 +87,7 @@ exports.commands = {
 		if (!room.users[targetUser.userid]) {
 			return this.errorReply(targetUser + " is not in this room. Please make sure they join.");
 		}
-		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ").")
+		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ").");
 		targetUser.popup("You passed your battle test and gained GL status. Congratulations!");
 		return this.privateModCommand(
 			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).";

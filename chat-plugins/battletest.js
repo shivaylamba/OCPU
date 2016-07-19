@@ -77,7 +77,7 @@ exports.commands = {
 	},
 	battletestelite4help: ["/battletestelite4 OR /bte4 [user]: Declares that a user passed their battle test and gained E4 status."],
 	
-	/*btgl: 'battletestgymleader',
+	btgl: 'battletestgymleader',
 	battletestgymleader: function (target, room, user) {
 		if (!this.can('declare', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -106,4 +106,4 @@ exports.commands = {
 		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test.");
 		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test.");
 	},
-};*/
+};

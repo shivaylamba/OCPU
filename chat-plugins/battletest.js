@@ -94,7 +94,7 @@ exports.commands = {
 		);
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
-	*/
+	
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {
@@ -106,4 +106,4 @@ exports.commands = {
 		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test.");
 		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test.");
 	},
-};
+};*/

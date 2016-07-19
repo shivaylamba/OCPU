@@ -30,7 +30,7 @@ exports.commands = {
 		this.add(targetUser.name + " has passed the battle test. (Approved by " + user.name + ").");
 		targetUser.popup("You have passed the battle test in " + room.title + "; congratulations!");
 		return this.privateModCommand(
-			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + "))."
+			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ")).";
 		);
 	},
 	battletestclearhelp: ["/battletestclear OR /btc [user]: Declares that a person has completed a battle test."],

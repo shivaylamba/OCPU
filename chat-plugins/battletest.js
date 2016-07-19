@@ -77,7 +77,7 @@ exports.commands = {
 	},
 	battletestelite4help: ["/battletestelite4 OR /bte4 [user]: Declares that a user passed their battle test and gained E4 status."],
 	
-	btgl: 'battletestgymleader',
+	/*btgl: 'battletestgymleader',
 	battletestgymleader: function (target, room, user) {
 		if (!this.can('declare', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -94,7 +94,7 @@ exports.commands = {
 		);
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
-	
+	*/
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {

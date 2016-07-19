@@ -111,7 +111,7 @@ exports.pmmodchat = false;
 // forced timer - force the timer on for all battles
 //   Players will be unable to turn it off.
 //   This setting can also be turned on with the command /forcetimer.
-exports.forcetimer = true;
+exports.forcetimer = false;
 
 // backdoor - allows Pokemon Showdown system operators to provide technical
 //            support for your server

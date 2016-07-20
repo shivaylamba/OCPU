@@ -758,7 +758,7 @@ exports.commands = {
 				}
 			}
 			if (match === true) {
-				if (currentbadges.indexOf(target) > -1) return self.errorReply('This user already already has the badge ' + target + '.');
+				if (currentbadges.indexOf(target) > -1) return this.errorReply('This user already already has the badge ' + target + '.');
 				let re = new RegExp(line, 'g');
 				let newdata = data.replace(re, targetUser.userid + ':' + currentbadges + target);
 				fs.writeFile('badges.txt', newdata, (err, data) => {

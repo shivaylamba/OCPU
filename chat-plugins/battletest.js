@@ -32,7 +32,7 @@ exports.commands = {
 		return this.privateModCommand(
 			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ")).";
 		);
-	},*/
+	},
 	battletestclearhelp: ["/battletestclear OR /btc [user]: Declares that a person has completed a battle test."],
 	
 	btf: "battletestfail",
@@ -94,7 +94,7 @@ exports.commands = {
 		);
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
-	
+	*/
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {

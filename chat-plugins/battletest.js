@@ -17,7 +17,7 @@ exports.commands = {
 	},
 	battletesthelp: ["/battletest OR /bt [user]: Declares to the chat room that you are starting a battle test for a person."],
 	
-	btc: 'battletestclear',
+	/*btc: 'battletestclear',
 	battletestclear: function (target, room, user) {
 		if (!this.can('roomvoice', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -32,7 +32,7 @@ exports.commands = {
 		return this.privateModCommand(
 			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ")).";
 		);
-	},
+	},*/
 	battletestclearhelp: ["/battletestclear OR /btc [user]: Declares that a person has completed a battle test."],
 	
 	btf: "battletestfail",

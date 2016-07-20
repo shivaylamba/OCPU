@@ -61,6 +61,7 @@ Dnsbl.query = function queryDnsbl(ip, callback) {
 // require cidr and dns separately for ease of hotpatching
 let cidr = require('./cidr.js');
 let rangeLeaseweb = cidr.checker('207.244.64.0/18');
+let rangeEndProxy = cidr.checker('207.244.0.0/32');
 let rangeLeaseweb2 = cidr.checker('209.58.128.0/18');
 let rangeLeaseweb3 = cidr.checker('103.254.152.0/22');
 let rangeVoxility = cidr.checker('5.254.64.0/20');
@@ -114,7 +115,7 @@ Dnsbl.reverse = function reverseDns(ip, callback) {
 			callback(null, ['yourserver.se.proxy-nohost']);
 			return;
 		}
-		if (rangeLeaseweb(ip) || rangeLeaseweb2(ip) || rangeLeaseweb3(ip) || rangeVoxility(ip)) {
+		if (rangeLeaseweb(ip) || rangeLeaseweb2(ip) || rangeLeaseweb3(ip) || rangeVoxility(ip) || rangeEndProxy(ip)) {
 			callback(null, ['zenmate.proxy-nohost']);
 			return;
 		}

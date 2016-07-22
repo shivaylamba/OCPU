@@ -102,7 +102,7 @@ exports.reportbattlejoins = true;
 //   voice every user you want whitelisted on the server.
 
 // chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
-exports.chatmodchat = 'autoconfirmed';
+exports.chatmodchat = false;
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
 exports.battlemodchat = false;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
@@ -142,10 +142,10 @@ exports.consoleips = ['127.0.0.1'];
 exports.watchconfig = true;
 
 // logchat - whether to log chat rooms.
-exports.logchat = true;
+exports.logchat = false;
 
 // logchallenges - whether to log challenge battles. Useful for tournament servers.
-exports.logchallenges = true;
+exports.logchallenges = false;
 
 // loguserstats - how often (in milliseconds) to write user stats to the
 // lobby log. This has no effect if `logchat` is disabled.
@@ -170,7 +170,7 @@ exports.tellsexpiryage = 1000 * 60 * 60 * 24 * 7;
 // and above. Set to ' ' to allow all users to use offline messaging and `false` to disable
 // offline messaging completely. Set to `'autoconfirmed'` to allow only autoconfirmed users
 // to send offline messages.
-exports.tellrank = '%';
+exports.tellrank = '+';
 
 // Custom avatars.
 // This allows you to specify custom avatar images for users on your server.
@@ -200,7 +200,7 @@ exports.tourannouncements = [/* roomids */];
 // appealurl - specify a URL containing information on how users can appeal
 // disciplinary actions on your section. You can also leave this blank, in
 // which case users won't be given any information on how to appeal.
-exports.appealurl = 'http://ocpu.proboards.com/board/4/appeal-board';
+exports.appealurl = '';
 
 // replsocketprefix - the prefix for the repl sockets to be listening on
 // replsocketmode - the file mode bits to use for the repl sockets
@@ -268,19 +268,35 @@ exports.grouplist = [
 		globalonly: true,
 	},
 	{
-		symbol: '#',
-		id: "founder",
-		name: "Room Founder",
-		inherit: '#',
+		symbol: '&',
+		id: "leader",
+		name: "Leader",
+		inherit: '@',
+		jurisdiction: '@u',
+		promote: 'u',
 		roomowner: true,
+		roombot: true,
+		roommod: true,
+		roomdriver: true,
+		forcewin: true,
+		declare: true,
+		modchatall: true,
+		rangeban: true,
+		makeroom: true,
+		editroom: true,
+		potd: true,
+		disableladder: true,
+		globalonly: true,
+		tournamentsmanagement: true,
+		gamemanagement: true,
 	},
 	{
 		symbol: '#',
 		id: "owner",
 		name: "Room Owner",
 		inherit: '@',
-		jurisdiction: '@u',
-		promote: 'u',
+		jurisdiction: 'u',
+		roombot: true,
 		roommod: true,
 		roomdriver: true,
 		editroom: true,
@@ -291,27 +307,23 @@ exports.grouplist = [
 		gamemanagement: true,
 	},
 	{
-		symbol: '&',
-		id: "leader",
-		name: "Leader",
-		inherit: '@',
-		jurisdiction: '@u',
-		promote: 'u',
-		roommod: true,
-		receivemutedpms: true,
-		roomdriver: true,
-		roomowner: true,
-		forcewin: true,
-		modchatall: true,
-		rangeban: true,
+		symbol: '\u2605',
+		id: "player",
+		name: "Player",
+		inherit: '+',
+		roomvoice: true,
+		modchat: true,
+		roomonly: true,
 		editroom: true,
-		tournamentsmanagement: true,
-		gamemanagement: true,
-		bypassblocks: 'u%@&',
-		customavatar: true,
-		pban: true,
-		trainercard: true,
-		globalonly: true,
+		joinbattle: true,
+	},
+	{
+		symbol: '*',
+		id: "bot",
+		name: "Bot",
+		inherit: '@',
+		jurisdiction: 'u',
+		declare: true,
 	},
 	{
 		symbol: '@',
@@ -323,10 +335,8 @@ exports.grouplist = [
 		modchat: true,
 		roomvoice: true,
 		forcerename: true,
-		timer: true,
 		ip: true,
 		alts: '@u',
-		bypassblocks: 'u%@',
 		tournaments: true,
 		game: true,
 	},
@@ -342,23 +352,15 @@ exports.grouplist = [
 		mute: '\u2605u',
 		lock: true,
 		forcerename: true,
+		timer: true,
+		modlog: true,
 		alts: '%u',
-		bypassblocks: 'u%',
+		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
 		tournamentsmoderation: true,
 		jeopardy: true,
 		joinbattle: true,
-		modlog: true,
 		minigame: true,
-	},
-	{
-		symbol: '\u2605',
-		id: "player",
-		name: "Player",
-		inherit: '+',
-		roomonly: true,
-		roomvoice: true,
-		joinbattle: true,
 	},
 	{
 		symbol: '+',
@@ -373,4 +375,3 @@ exports.grouplist = [
 		ip: 's',
 	},
 ];
-

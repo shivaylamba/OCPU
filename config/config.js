@@ -314,6 +314,7 @@ exports.grouplist = [
 		customavatar: true,
 		pban: true,
 		trainercard: true,
+		glboalonly: true,
 	},
 	{
 		symbol: '@',

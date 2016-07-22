@@ -299,7 +299,7 @@ exports.grouplist = [
 		name: "Leader",
 		inherit: '@',
 		jurisdiction: '@u',
-		//promote: 'u',
+		promote: 'u',
 		roommod: true,
 		receivemutedpms: true,
 		roomdriver: true,

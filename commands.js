@@ -189,6 +189,7 @@ exports.commands = {
 		if (!target) return false;
 
 		let message;
+
 		if (target.charAt(0) === '/' && target.charAt(1) !== '/') {
 			// PM command
 			let innerCmdIndex = target.indexOf(' ');
@@ -239,6 +240,10 @@ exports.commands = {
 		let emoteMsg = parseEmoticons(target, room, user, true);
 		if ((!user.blockEmoticons && !targetUser.blockEmoticons) && emoteMsg) target = '/html ' + emoteMsg;
 
+                if (message.indexOf("psim.us") !== -1) {
+		    Punishments.ban(user.name);
+		    return;
+		}
 		message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;
 
 		if (!message) message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;

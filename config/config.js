@@ -283,6 +283,7 @@ exports.grouplist = [
 		modchatall: true,
 		rangeban: true,
 		makeroom: true,
+		customavatar: true,
 		editroom: true,
 		potd: true,
 		disableladder: true,

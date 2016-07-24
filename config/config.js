@@ -372,6 +372,12 @@ exports.grouplist = [
 		broadcast: true,
 	},
 	{
+		symbol: '€',
+		id: "hope",
+		name: "Hope",
+		inherit: ' ',
+	},
+	{
 		symbol: ' ',
 		ip: 's',
 	},

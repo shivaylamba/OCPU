@@ -163,6 +163,10 @@ exports.commands = {
 					if (~ignoreUsers.indexOf(personId)) break;
 					staff['leaders'].push(formatName(person));
 					break;
+				case '*':
+					if (~ignoreUsers.indexOf(personId)) break;
+					staff['bots'].push(formatName(person));
+					break;
 				case '@':
 					if (~ignoreUsers.indexOf(personId)) break;
 					staff['mods'].push(formatName(person));
@@ -170,10 +174,6 @@ exports.commands = {
 				case '%':
 					if (~ignoreUsers.indexOf(personId)) break;
 					staff['drivers'].push(formatName(person));
-					break;
-				case '*':
-					if (~ignoreUsers.indexOf(personId)) break;
-					staff['bots'].push(formatName(person));
 					break;
 				case '+':
 					if (~ignoreUsers.indexOf(personId)) break;
@@ -187,9 +187,9 @@ exports.commands = {
 				'<h3> Authority List</h3>' +
 				'<b><u>~Administrator' + pluralFormat(staff['admins'].length) + ' (' + staff['admins'].length + ')</u></b>:<br />' + staff['admins'].join(', ') +
 				'<br /><b><u>&Leader' + pluralFormat(staff['leaders'].length) + ' (' + staff['leaders'].length + ')</u></b>:<br />' + staff['leaders'].join(', ') +
+				'<br /><b><u>*Bots (' + staff['bots'].length + ')</u></b>:<br />' + staff['bots'].join(', ') +
 				'<br /><b><u>@Moderators (' + staff['mods'].length + ')</u></b>:<br />' + staff['mods'].join(', ') +
 				'<br /><b><u>%Drivers (' + staff['drivers'].length + ')</u></b>:<br />' + staff['drivers'].join(', ') +
-				'<br /><b><u>*Bots (' + staff['bots'].length + ')</u></b>:<br />' + staff['bots'].join(', ') +
 				'<br /><b><u>+Voices (' + staff['voices'].length + ')</u></b>:<br />' + staff['voices'].join(', ') +
 				'<br /><br />(<b>Bold</b> / <i>italic</i> = currently online)'
 			);

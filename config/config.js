@@ -287,7 +287,6 @@ exports.grouplist = [
 		editroom: true,
 		potd: true,
 		disableladder: true,
-		globalonly: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
 	},

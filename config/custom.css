@@ -1,5 +1,5 @@
 body {
-    background: url("http://wallpapercave.com/wp/lXkkBIG.jpg") no-repeat;
+    background: url("https://pokewalls.files.wordpress.com/2013/06/eeveelutions8-1920x1200.jpg") no-repeat;
     background-color: #A9ABBD;
   }
 
@@ -20,11 +20,11 @@ body {
 }
 
 .userlist{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .chat-log {
-    background: #7cfc00 url("http://www.pokestadium.com/assets/img/sprites/official-art/large/jolteon-rg.png") top right no-repeat;
+    background: #ced8e4 
     border-bottom: 1px solid #1affff;
     border-left: 1px solid #1affff;
 }
@@ -69,11 +69,11 @@ body {
 }
 
 .pm-log{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .pm-window h3{
-    background: #7cfc00 url("http://pldh.net/media/pokecons_action/470.gif") bottom right no-repeat;
+    background: #ced8e4 url("http://pldh.net/media/pokecons_action/470.gif") bottom right no-repeat;
     background-position: 200px;
     color:#006666;
 }
@@ -94,71 +94,71 @@ body {
 }
 
 .tabbar a.button.cur, .tabbar a.button.cur:hover {
-    background: #7cfc00;
-      border-color:#7cfc00;
+    background: #ced8e4;
+      border-color:#ced8e4;
     color: #000;
   }
 
 .tabbar a.button {
-    background:#7cfc00;
+    background:#ced8e4;
     color:#000;
-    border-color:#7cfc00;
+    border-color:#ced8e4;
 }
 
 .maintabbarbottom {
-    background: #7cfc00;
-    border-color:#7cfc00;
+    background: #ced8e4;
+    border-color:#ced8e4;
   }
 
 .teamlist{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .pad{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .team{
-    background:#7cfc00;
-    color:#7cfc00;
+    background:#ced8e4;
+    color:#ced8e4;
 }
 
 .teamchart{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .teamchart, .teamchart li{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .battle-log{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .ps-room .battle-controls{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .battle-log h2{
     background:white;
-    color:#7cfc00;
+    color:#ced8e4;
 }
 
 .ps-room .battle-log-add{
-    background:#7cfc00;
+    background:#ced8e4;
 }
 
 .rightbar, .leftbar{
-    background:#7cfc00;
+    background:#ced8e4;
     color:white;
 }
 
 .ps-popup{
-    background:#7cfc00;
+    background:#ced8e4;
 }
   
  .chat-log-add{
-    background:#7cfc00;
+    background:#ced8e4;
   }
 
 .mainmenufooter a {
@@ -171,7 +171,7 @@ body {
 }
 
 .menugroup .button {
-    background: #7cfc00;
+    background: #ced8e4;
         box-sizing: border-box;
     font-size: 10pt;
     font-family: Verdana,Helvetica,Arial,sans-serif;
@@ -194,7 +194,7 @@ body {
   }
   
 .menugroup .button:hover {
-    background: #7cfc00;
+    background: #ced8e4;
   }
     #lobby-userlist-users {
     background: url("http://pldh.net/media/pokecons_action/470.gif") right no-repeat;

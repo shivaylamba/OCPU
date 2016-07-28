@@ -366,7 +366,7 @@ exports.grouplist = [
 		symbol: '+',
 		id: "voice",
 		name: "Voice",
-		inherit: ' ',
+		inherit: '€',
 		alts: 's',
 		broadcast: true,
 	},

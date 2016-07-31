@@ -17,7 +17,7 @@ exports.commands = {
 	},
 	battletesthelp: ["/battletest OR /bt [user]: Declares to the chat room that you are starting a battle test for a person."],
 	
-	btc: 'battletestclear',
+	/*btc: 'battletestclear',
 	battletestclear: function (target, room, user) {
 		if (!this.can('roomvoice', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -48,14 +48,14 @@ exports.commands = {
 		return this.privateModCommand("(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + ")).");
 	},
 	battletestfailhelp: ["/battletestfail OR /btf [user]: Declares that a person has failed a battle test."],
-
+*/
 	// Checks all command versions. Not very helpful.
 	btv: 'battletestversion',
 	battletestversion: function (target, room, user) {
-		this.popupReply("Plugin version: Alpha 0.1.5a");
+		this.popupReply("Plugin version: Alpha 0.1.5a. All commands are broken except three.");
 	},
 	
-	bte4: 'battletestelite4',
+	/*bte4: 'battletestelite4',
 	battletestelite4: function (target, room, user) {
 		if (!this.can('declare', null, room)) return false; // Room Owners only can declare this
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -86,7 +86,7 @@ exports.commands = {
 		return this.privateModCommand("(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).");
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
-	
+	*/
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {

@@ -1,7 +1,7 @@
 'use strict';
 
 exports.commands = {
-	bt: 'battletest',
+	/*bt: 'battletest',
 	battletest: function (target, room, user) {
 		if (!this.can('roomvoice', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply('You cannot do this while unable to talk.');

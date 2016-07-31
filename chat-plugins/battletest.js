@@ -29,9 +29,7 @@ exports.commands = {
 		}
 		this.add(targetUser.name + " has passed the battle test. (Approved by " + user.name + ").");
 		targetUser.popup("You have passed the battle test in " + room.title + "; congratulations!");
-		return this.privateModCommand(
-			"(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ")).";
-		);
+		return this.privateModCommand("(" + targetUser.name + " has passed their battle test. (Approved by " + user.name + ")).");
 	},
 	battletestclearhelp: ["/battletestclear OR /btc [user]: Declares that a person has completed a battle test."],
 	
@@ -47,9 +45,7 @@ exports.commands = {
 		}
 		this.add(targetUser.name + " has failed the battle test. (Tested by " + user.name + ").");
 		targetUser.popup("You have failed the battle test in " + room.title + ".");
-		return this.privateModCommand(
-			"(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + "))."
-		);
+		return this.privateModCommand("(" + targetUser.name + " has failed their battle test. (Tested by " + user.name + ")).");
 	},
 	battletestfailhelp: ["/battletestfail OR /btf [user]: Declares that a person has failed a battle test."],
 
@@ -71,9 +67,7 @@ exports.commands = {
 		}
 		this.add(targetUser.name + " passed their battle test and gained E4 status! (Approved by " + user.name + ".)");
 		targetUser.popup("You passed your battle test and gained E4 status. Congratulations!");
-		return this.privateModCommand(
-			"(" + targetUser.name + " passed their battle test and gained E4 status. (Approved by " + user.name + "))."
-		);
+		return this.privateModCommand("(" + targetUser.name + " passed their battle test and gained E4 status. (Approved by " + user.name + ")).");
 	},
 	battletestelite4help: ["/battletestelite4 OR /bte4 [user]: Declares that a user passed their battle test and gained E4 status."],
 	
@@ -89,9 +83,7 @@ exports.commands = {
 		}
 		this.add(targetUser.name + " passed their battle test and gained GL status! (Approved by " + user.name + ").");
 		targetUser.popup("You passed your battle test and gained GL status. Congratulations!");
-		return this.privateModCommand(
-			"(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).";
-		);
+		return this.privateModCommand("(" + targetUser.name + " passed their battle test and gained GL status. (Approved by " + user.name + ")).");
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
 	

@@ -17,7 +17,7 @@ exports.commands = {
 	},
 	battletesthelp: ["/battletest OR /bt [user]: Declares to the chat room that you are starting a battle test for a person."],
 	
-	/*btc: 'battletestclear',
+	btc: 'battletestclear',
 	battletestclear: function (target, room, user) {
 		if (!this.can('roomvoice', null, room)) return false;
 		if (!this.canTalk()) return this.errorReply("You cannot do this while unable to talk.");
@@ -94,16 +94,16 @@ exports.commands = {
 		);
 	},
 	battletestgymleaderhelp: ["/battletestgymleader OR /btgl [user]: Declares that a user passed their battle test and gained GL status."],
-	*/
+	
 	// Displays all battle test commands. Extremly helpful
 	btcmds: 'battletestcommands', // changed name to not interfere with '/help battletest'
 	battletestcommands: function (target, room, user) {
 		this.sendReply("/battletest [user] OR /bt [user]: Says to the room that you are starting a battletest on [user]."); 
-		this.sendReply("/battletestclear [user] OR /btc [user]: Says to the room that [user] has completed the battle test. [Broken]");
-		this.sendReply("/battletestfail [user] OR /btf [user]: Says to the rooom that [user] has failed the battle test. [Broken]");
+		this.sendReply("/battletestclear [user] OR /btc [user]: Says to the room that [user] has completed the battle test. [Fixing]");
+		this.sendReply("/battletestfail [user] OR /btf [user]: Says to the rooom that [user] has failed the battle test. [Fixing]");
 		this.sendReply("/battletestcommands OR /btcmds: What you are looking at now.");
-		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version. [Unusuable]");
-		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test. [Broken]");
-		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test. [Broken]");
+		this.sendReply("/battletestversion OR /btv: Displays the battle test plugin version.");
+		this.sendReply("/battletestelite4 [user] OR /bte4 [user]: Says to the room that [user] has gotten E4 status through the battle test. [Fixing]");
+		this.sendReply("/battletestgymleader [user] OR /btgl [user]: Says to the room that [user] has gottel GL status through the battle test. [Fixing]");
 	},
 };

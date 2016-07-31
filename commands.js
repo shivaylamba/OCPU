@@ -1730,7 +1730,7 @@ exports.commands = {
 			Rooms.global.writeChatRoomData();
 		}
 		
-		Rooms.get("staff").add(user.name + " has set modchat to " + modchat + " in " + room.id ".");
+		Rooms.get("staff").add(user.name + " has set modchat to " + modchat + " in " + room.id + ".");
 	},
 	modchathelp: ["/modchat [off/autoconfirmed/+/%/@/#/&/~] - Set the level of moderated chat. Requires: @ for off/autoconfirmed/+ options, # & ~ for all the options"],
 
